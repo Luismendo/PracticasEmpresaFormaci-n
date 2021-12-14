@@ -13,6 +13,26 @@ import java.util.concurrent.atomic.AtomicLong;
 @RestController()
 public class Controller1 {
 
+    @GetMapping("/")
+    @ResponseBody
+    public String info() {
+        return "Paths:<br>"+
+                "<b>/user/{name} ==> saluda al usuario, {name} sin {}</b><br>" +
+                "<b style='color:red;'>/useradd ==> añade un usuario por json y devuelve ese user +1 edad  (solo postman)</b><br>"+
+                "===========================<br>"+
+                "/id/algo ==> Parametro id + algo<br>"+
+                "/usershow ==> listado de users guardados<br>"+
+                "Estructura de la clase:<br>"+
+                "{<br>" +
+                "    \"name\": \"nombre\",<br>" +
+                "    \"city\": \"ciudad\",<br>" +
+                "    \"age\": edad<br>" +
+                "}";
+
+
+
+    }
+
     @GetMapping("/user/{name}")
     public String getHola(@PathVariable String name) {
         return "Hola " + name;
@@ -37,9 +57,10 @@ public class Controller1 {
 
     @PostMapping("/useradd")
     @ResponseBody
-    public void add(@RequestBody User user) {
+    public User add(@RequestBody User user) {
         user.setId(counter.getAndIncrement());
         listaUsers.add(new User(counter.get(), user.getName(), user.getCity(), user.getAge()));
-        //return  user;
+        user.setAge(user.getAge()+1);
+        return  user;
     }
 }
