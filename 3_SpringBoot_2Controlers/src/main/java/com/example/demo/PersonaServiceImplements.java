@@ -8,9 +8,7 @@ import java.util.List;
 
 @Service
 public class PersonaServiceImplements implements PersonaService{
-    @Autowired
-    User user;
-    List<Ciudad> ciudadList = new ArrayList<>();
+    private User user = new User();
 
     @Override
     public User getUser() {
