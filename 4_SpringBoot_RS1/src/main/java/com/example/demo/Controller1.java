@@ -67,7 +67,7 @@ public class Controller1 {
         manageUsers.setUserName(user.getName());
         manageUsers.setUserCity(user.getCity());
         manageUsers.setUserAge(user.getAge());
-        manageUsers.addUserList(manageUsers.getUser());
+        manageUsers.addUserList(new User(manageUsers.getUser().getId(),user.getName(),user.getCity(),user.getAge()));
         return  manageUsers.getUser();
     }
 }
