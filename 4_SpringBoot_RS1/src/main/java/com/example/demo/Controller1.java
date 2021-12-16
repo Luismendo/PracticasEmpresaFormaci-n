@@ -40,7 +40,7 @@ public class Controller1 {
 
     }
 
-    @GetMapping("/post")
+    @PutMapping("/post")
     @ResponseBody
     public String getId(@RequestParam(defaultValue = "bad request") String var1,String var2) {
         return "Parametro var1: " + var1 +" <br> "+
