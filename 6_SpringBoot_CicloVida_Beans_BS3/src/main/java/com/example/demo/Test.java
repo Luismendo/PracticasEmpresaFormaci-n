@@ -7,10 +7,12 @@ import javax.annotation.PostConstruct;
 
 @Data
 @Component
-public class Func1 {
+public class Test {
+    public Test() {
+    }
 
     @PostConstruct
     public void func1(){
-        System.out.println("“Hola desde clase inicial");
+        System.out.println("Hola desde clase inicial");
     }
 }

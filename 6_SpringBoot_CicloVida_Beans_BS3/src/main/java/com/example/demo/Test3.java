@@ -4,14 +4,14 @@ import lombok.Data;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.PostConstruct;
-
 @Data
 @Component
-public class Func2 implements CommandLineRunner {
+public class Test3 implements CommandLineRunner {
+    public Test3() {
+    }
 
     @Override
     public void run(String... args) throws Exception {
-        System.out.println("Hola desde clase secundari");
+        System.out.println("Que rayada: " + args );
     }
 }
