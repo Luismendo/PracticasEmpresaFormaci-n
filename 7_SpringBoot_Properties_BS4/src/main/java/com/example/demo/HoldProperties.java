@@ -12,4 +12,5 @@ import javax.annotation.PostConstruct;
 public class HoldProperties {
     private String var1;
     private int var2;
+    private String var3;
 }

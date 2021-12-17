@@ -5,25 +5,26 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.PostConstruct;
+
 @RestController()
 public class Controller1 {
+    @Autowired
+    private HoldProperties holdProperties;
 
+    @GetMapping("/valores")
+    public String getVars() {
+        return "valor de var1 es: "+holdProperties.getVar1()+ "valor de my.var2 es: "+holdProperties.getVar2();
 
-
-    @Bean
-    CommandLineRunner func2(){
-        return p -> { System.out.println("Hola desde clase secundaria"); };
     }
-    @Autowired
-    Test3 test3;
-    @Autowired
-    HoldProperties test;
 
+    @GetMapping("/var3")
+    public String getVar3() {
+        if(holdProperties.getVar3() == null){
+            holdProperties.setVar3("No tiene valor");
+        }
 
-
-    @GetMapping("/user/{name}")
-    public String getHola(@PathVariable String name) {
-        return "Hola " + name;
+        return "valor de var3 es: "+holdProperties.getVar3();
 
     }
 }
