@@ -16,7 +16,9 @@ public class Controller3 {
     @ResponseBody
     public void getId(@PathVariable int id) {
         int IdMatch = manageUsers.getIdMatch(id,manageUsers.getUserList());
-        manageUsers.getUserList().remove(IdMatch);
+        if(IdMatch >= 0){
+            manageUsers.getUserList().remove(IdMatch);
+        }
         //return manageUsers.getUserList().get(IdMatch);
     }
 }

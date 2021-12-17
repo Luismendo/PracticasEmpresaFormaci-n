@@ -23,7 +23,7 @@ public class ManageUsers_Implement implements ManageUsers_Interface{
                 return i;
             }
         }
-        return 0;
+        return -1;
     }
 
     @Override

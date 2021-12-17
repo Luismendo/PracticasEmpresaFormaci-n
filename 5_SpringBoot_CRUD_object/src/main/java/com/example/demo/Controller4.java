@@ -18,7 +18,10 @@ public class Controller4 {
     @RequestMapping(value = "/persona/{id}", method = GET)
     public User getUSer(@PathVariable int id) {
         int IdMatch = manageUsers.getIdMatch(id,manageUsers.getUserList());
-        return manageUsers.getUserList().get(IdMatch);
+        if(IdMatch >= 0){
+            return manageUsers.getUserList().get(IdMatch);
+        }
+        return null;
     }
 
 }
