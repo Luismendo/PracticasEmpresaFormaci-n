@@ -24,4 +24,10 @@ public class Controller4 {
         return null;
     }
 
+    @RequestMapping(value = "/persona/nombre/{name}", method = GET)
+    public List<User> getUSer(@PathVariable String name) {
+        return manageUsers.getNameMatch(name,manageUsers.getUserList());
+    }
+
+
 }

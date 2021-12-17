@@ -8,6 +8,7 @@ import java.util.concurrent.atomic.AtomicLong;
 
 public interface ManageUsers_Interface {
     int getIdMatch(int id, List<User> list);
+    List<User> getNameMatch(String name, List<User> list);
 
     List<User> getUserList();
     void addUserList(User user);
