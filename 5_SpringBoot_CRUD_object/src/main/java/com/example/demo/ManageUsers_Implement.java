@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
+import java.util.stream.Collectors;
 
 @Service
 public class ManageUsers_Implement implements ManageUsers_Interface{
@@ -17,6 +18,7 @@ public class ManageUsers_Implement implements ManageUsers_Interface{
 
     @Override
     public int getIdMatch(int id, List<User> list) {
+        //list.stream().filter(p -> p.getId() == id);
         for(int i = 0; i < list.size(); i++){
             long UserId = list.get(i).getId();
             if(UserId == id){
@@ -28,13 +30,17 @@ public class ManageUsers_Implement implements ManageUsers_Interface{
 
     @Override
     public List<User> getNameMatch(String name, List<User> list) {
+        return list.stream().filter(p -> p.getName().equalsIgnoreCase(name)).collect(Collectors.toList());
+        /*
         List<User> tempMatch = new ArrayList<>();
+
         for(int i = 0; i < list.size(); i++){
             if(list.get(i).getName().equals(name)){
                 tempMatch.add(list.get(i));
             }
         }
         return tempMatch;
+        */
     }
 
     @Override
