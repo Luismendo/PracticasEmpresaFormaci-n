@@ -22,10 +22,6 @@ public class Controller1 {
 
     @GetMapping("/var3")
     public String getVar3() {
-        if(holdProperties.getVar3() == null){
-            holdProperties.setVar3("No tiene valor");
-        }
-
         return "valor de var3 es: "+holdProperties.getVar3();
 
     }

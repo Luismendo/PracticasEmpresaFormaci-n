@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 
 @Data
 @Component
-@ConfigurationProperties(prefix="My")
+@ConfigurationProperties(prefix="my")
 public class HoldPropertiesVAR2 {
     private int var2;
 
