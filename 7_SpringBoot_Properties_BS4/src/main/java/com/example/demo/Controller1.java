@@ -11,10 +11,12 @@ import javax.annotation.PostConstruct;
 public class Controller1 {
     @Autowired
     private HoldProperties holdProperties;
+    @Autowired
+    private HoldPropertiesVAR2 holdPropertiesVAR2;
 
     @GetMapping("/valores")
     public String getVars() {
-        return "valor de var1 es: "+holdProperties.getVar1()+ "valor de my.var2 es: "+holdProperties.getVar2();
+        return "valor de var1 es: "+holdProperties.getVar1()+ "valor de my.var2 es: "+holdPropertiesVAR2.getVar2();
 
     }
 

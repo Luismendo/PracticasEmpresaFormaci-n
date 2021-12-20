@@ -12,6 +12,7 @@ public class Test3 implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        System.out.println("Que rayada: " + args );
+
+        System.out.println("Que rayada: " + args[0] );
     }
 }

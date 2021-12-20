@@ -28,11 +28,4 @@ public class Controller1 {
     @Autowired
     Test test;
 
-
-
-    @GetMapping("/user/{name}")
-    public String getHola(@PathVariable String name) {
-        return "Hola " + name;
-
-    }
 }
