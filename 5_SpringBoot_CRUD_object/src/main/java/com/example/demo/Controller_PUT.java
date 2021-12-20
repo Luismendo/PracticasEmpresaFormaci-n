@@ -3,13 +3,10 @@ package com.example.demo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
-import static org.springframework.web.bind.annotation.RequestMethod.DELETE;
 import static org.springframework.web.bind.annotation.RequestMethod.PUT;
 
 @RestController()
-public class Controller2 {
+public class Controller_PUT {
     @Autowired
     ManageUsers_Interface manageUsers;
 

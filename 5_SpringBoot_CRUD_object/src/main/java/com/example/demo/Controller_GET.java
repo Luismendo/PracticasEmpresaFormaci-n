@@ -5,11 +5,10 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-import static org.springframework.web.bind.annotation.RequestMethod.DELETE;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
 @RestController()
-public class Controller4 {
+public class Controller_GET {
     @Autowired
     ManageUsers_Interface manageUsers;
 
