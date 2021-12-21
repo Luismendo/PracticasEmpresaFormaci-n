@@ -17,9 +17,10 @@ public class miconfiguracion {
     private String var4;
     @Value("${var6}")
     private String var6;
-
     //estará null porque no se seta
     private String var5;
+
+
 
 
 }
