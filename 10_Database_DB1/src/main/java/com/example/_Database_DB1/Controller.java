@@ -1,0 +1,48 @@
+package com.example._Database_DB1;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+public class Controller {
+    @Autowired
+    UsuarioRepositorio usuarioRepositorio;
+
+    @GetMapping
+    public List<Usuario> getAll(){
+        return usuarioRepositorio.findAll();
+    }
+
+    @GetMapping("/id/{id}")
+
+    public Usuario getById(@PathVariable int id) throws Exception{
+        return usuarioRepositorio.findById(id).orElseThrow(() -> new Exception("No se encuentra"));
+    }
+
+    @GetMapping("name/{name}")
+    public List<Usuario> getByName(@PathVariable String name){
+        return usuarioRepositorio.findByName(name);
+    }
+
+
+
+    @PostMapping
+    public Usuario insert(@RequestBody Usuario usuario) throws Exception {
+        if (usuario.getUsuario()==null) {throw new Exception("Usuario no puede ser nulo"); }
+        if (usuario.getUsuario().length()>10) { throw new Exception("Longitud de usuario no puede ser superior a 10 caracteres");}
+        if (usuario.getPassword()==null) {throw new Exception("Usuario no puede ser nulo"); }
+        if (usuario.getName()==null) {throw new Exception("Usuario no puede ser nulo"); }
+        if (usuario.getCompany_email()==null) {throw new Exception("Usuario no puede ser nulo"); }
+        if (usuario.getCity()==null) {throw new Exception("Usuario no puede ser nulo"); }
+        if (usuario.getActive()==null) {throw new Exception("Usuario no puede ser nulo"); }
+        if (usuario.getCreated_date()==null) {throw new Exception("Usuario no puede ser nulo"); }
+        if (usuario.getPersonal_email()==null) {throw new Exception("Usuario no puede ser nulo"); }
+
+        usuarioRepositorio.save(usuario);
+        return usuario;
+    }
+}
