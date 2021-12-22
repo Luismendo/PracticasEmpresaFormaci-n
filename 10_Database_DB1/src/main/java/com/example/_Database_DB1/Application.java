@@ -1,13 +1,13 @@
-package com.example.Database;
+package com.example._Database_DB1;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class DatabaseApplication {
+public class Application {
 
 	public static void main(String[] args) {
-		SpringApplication.run(DatabaseApplication.class, args);
+		SpringApplication.run(Application.class, args);
 	}
 
 }
