@@ -18,10 +18,20 @@ public class ListUsuarioOutputDTO {
     }
 
     public ListUsuarioOutputDTO(List<Usuario> usuarioList) {
+        //Mejor?
+        usuarioList.stream().forEach(elem ->
+        {
+            this.usuarioOutputDTO = new UsuarioOutputDTO(elem);
+            this.usuarioOutputDTOList.add(this.usuarioOutputDTO);
+        });
+
+        /*
         for(int i = 0; i<usuarioList.size();i++){
             this.usuarioOutputDTO = new UsuarioOutputDTO(usuarioList.get(i));
             usuarioOutputDTOList.add(this.usuarioOutputDTO);
         }
+        */
+
     }
 
 }
