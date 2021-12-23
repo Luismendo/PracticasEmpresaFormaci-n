@@ -1,37 +1,21 @@
-package com.example._Database_DB1.Usuario.infrastructure.controller;
+package com.example._Database_DB1.Usuario.application;
 
-import com.example._Database_DB1.Usuario.domain.UsuarioRepositorio;
+import com.example._Database_DB1.Usuario.application.Port.AddUsuarioPort;
 import com.example._Database_DB1.Usuario.domain.Usuario;
+import com.example._Database_DB1.Usuario.domain.UsuarioRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.stereotype.Service;
 
-import java.util.List;
 
-@RestController
-public class Controller {
+@Service
+public class AddUsuarioUseCase implements AddUsuarioPort {
     @Autowired
     UsuarioRepositorio usuarioRepositorio;
 
-    @GetMapping
-    public List<Usuario> getAll(){
-        return usuarioRepositorio.findAll();
+    public void AddUser(Usuario usuario){
+        usuarioRepositorio.save(usuario);
     }
-
-    @GetMapping("id/{id}")
-
-    public Usuario getById(@PathVariable int id) throws Exception{
-        return usuarioRepositorio.findById(id).orElseThrow(() -> new Exception("No se encuentra"));
-    }
-
-    @GetMapping("name/{name}")
-    public List<Usuario> getByName(@PathVariable String name){
-        return usuarioRepositorio.findByName(name);
-    }
-
-
-
-    @PostMapping
-    public Usuario insert(@RequestBody Usuario usuario) throws Exception {
+    public boolean validValues(Usuario usuario) throws Exception {
         if (usuario.getUsuario()==null) {throw new Exception("Usuario no puede ser nulo"); }
         if (usuario.getUsuario().length()>10) { throw new Exception("Longitud de usuario no puede ser superior a 10 caracteres");}
         if (usuario.getPassword()==null) {throw new Exception("getPassword no puede ser nulo"); }
@@ -42,14 +26,11 @@ public class Controller {
         if (usuario.getCreated_date()==null) {throw new Exception("getCreated_date no puede ser nulo"); }
         if (usuario.getPersonal_email()==null) {throw new Exception("getPersonal_email no puede ser nulo"); }
 
-        usuarioRepositorio.save(usuario);
-        return usuario;
+        return true;
     }
 
-    @DeleteMapping("/id/{id}")
-    public void deleteById(@PathVariable int id) throws Exception {
-        if(usuarioRepositorio.findById(id).isPresent()){
-            usuarioRepositorio.deleteById(id);
-        }
+    public void createUsuario(Usuario usuario) throws Exception {
+        validValues(usuario);
+        AddUser(usuario);
     }
 }
