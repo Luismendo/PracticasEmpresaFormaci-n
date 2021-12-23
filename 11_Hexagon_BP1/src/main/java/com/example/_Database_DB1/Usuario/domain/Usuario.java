@@ -1,4 +1,4 @@
-package com.example._Database_DB1.domain;
+package com.example._Database_DB1.Usuario.domain;
 
 
 import lombok.Data;

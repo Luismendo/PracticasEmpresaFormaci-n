@@ -1,7 +1,7 @@
-package com.example._Database_DB1.infrastructure.controller;
+package com.example._Database_DB1.Usuario.infrastructure.controller;
 
-import com.example._Database_DB1.domain.Usuario;
-import com.example._Database_DB1.application.UsuarioRepositorio;
+import com.example._Database_DB1.Usuario.domain.UsuarioRepositorio;
+import com.example._Database_DB1.Usuario.domain.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

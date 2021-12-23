@@ -1,6 +1,6 @@
-package com.example._Database_DB1.application;
+package com.example._Database_DB1.Usuario.domain;
 
-import com.example._Database_DB1.domain.Usuario;
+import com.example._Database_DB1.Usuario.domain.Usuario;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
