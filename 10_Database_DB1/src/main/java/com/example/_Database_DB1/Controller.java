@@ -17,7 +17,7 @@ public class Controller {
         return usuarioRepositorio.findAll();
     }
 
-    @GetMapping("/id/{id}")
+    @GetMapping("id/{id}")
 
     public Usuario getById(@PathVariable int id) throws Exception{
         return usuarioRepositorio.findById(id).orElseThrow(() -> new Exception("No se encuentra"));
