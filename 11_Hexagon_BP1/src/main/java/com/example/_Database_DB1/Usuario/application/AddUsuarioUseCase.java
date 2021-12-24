@@ -15,6 +15,7 @@ public class AddUsuarioUseCase implements AddUsuarioPort {
     public void AddUser(Usuario usuario){
         usuarioRepositorio.save(usuario);
     }
+
     public boolean validValues(Usuario usuario) throws Exception {
         if (usuario.getUsuario()==null) {throw new Exception("Usuario no puede ser nulo"); }
         if (usuario.getUsuario().length()>10) { throw new Exception("Longitud de usuario no puede ser superior a 10 caracteres");}
@@ -30,7 +31,9 @@ public class AddUsuarioUseCase implements AddUsuarioPort {
     }
 
     public void createUsuario(Usuario usuario) throws Exception {
-        validValues(usuario);
-        AddUser(usuario);
+        if(validValues(usuario)){
+            AddUser(usuario);
+        }
+
     }
 }

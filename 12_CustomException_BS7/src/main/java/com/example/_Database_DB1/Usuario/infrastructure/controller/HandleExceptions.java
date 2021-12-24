@@ -16,7 +16,7 @@ public class AddUsuarioController {
     @PostMapping
     public UsuarioOutputDTO insert(@RequestBody UsuarioInputDTO usuarioInputDTO) throws Exception {
         Usuario usuario = usuarioInputDTO.Change(usuarioInputDTO);
-        addUsuarioPort.createUsuario(usuario);
-        return new UsuarioOutputDTO(usuario);
+        addUsuarioPort.AddUser(usuario);
+        return  new UsuarioOutputDTO(usuario);
     }
 }
