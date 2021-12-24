@@ -1,10 +1,13 @@
 package com.example._Database_DB1.Usuario.application;
 
 import com.example._Database_DB1.Usuario.application.Port.GetUsuarioPort;
+import com.example._Database_DB1.Usuario.domain.NotFoundException;
 import com.example._Database_DB1.Usuario.domain.Usuario;
 import com.example._Database_DB1.Usuario.domain.UsuarioRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
@@ -21,8 +24,12 @@ public class GetUsuarioUseCase implements GetUsuarioPort {
     }
 
     @Override
-    public Usuario getById(int id) throws Exception {
-        return usuarioRepositorio.findById(id).orElseThrow(() -> new Exception("No se encuentra"));
+    public Usuario getById(int id) throws NotFoundException {
+        if(usuarioRepositorio.findById(id).isPresent()){
+            return usuarioRepositorio.findById(id).get();
+        }else {
+            throw new NotFoundException("No existe el id");
+        }
     }
 
     @Override

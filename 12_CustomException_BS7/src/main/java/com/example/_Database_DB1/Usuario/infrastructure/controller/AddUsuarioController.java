@@ -1,7 +1,8 @@
 package com.example._Database_DB1.Usuario.infrastructure.controller;
 
-import com.example._Database_DB1.Usuario.application.AddUsuarioUseCase;
+
 import com.example._Database_DB1.Usuario.application.Port.AddUsuarioPort;
+import com.example._Database_DB1.Usuario.domain.UnprocesableException;
 import com.example._Database_DB1.Usuario.domain.Usuario;
 import com.example._Database_DB1.Usuario.infrastructure.dto.input.UsuarioInputDTO;
 import com.example._Database_DB1.Usuario.infrastructure.dto.output.UsuarioOutputDTO;
@@ -14,9 +15,9 @@ public class AddUsuarioController {
     AddUsuarioPort addUsuarioPort;
 
     @PostMapping
-    public UsuarioOutputDTO insert(@RequestBody UsuarioInputDTO usuarioInputDTO) throws Exception {
+    public UsuarioOutputDTO insert(@RequestBody UsuarioInputDTO usuarioInputDTO) throws UnprocesableException {
         Usuario usuario = usuarioInputDTO.Change(usuarioInputDTO);
-        addUsuarioPort.AddUser(usuario);
+        addUsuarioPort.createUsuario(usuario);
         return  new UsuarioOutputDTO(usuario);
     }
 }

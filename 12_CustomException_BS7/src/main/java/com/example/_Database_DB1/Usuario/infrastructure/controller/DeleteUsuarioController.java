@@ -1,9 +1,7 @@
 package com.example._Database_DB1.Usuario.infrastructure.controller;
 
 import com.example._Database_DB1.Usuario.application.Port.DeleteUsuarioPort;
-import com.example._Database_DB1.Usuario.domain.Usuario;
-import com.example._Database_DB1.Usuario.domain.UsuarioRepositorio;
-import com.example._Database_DB1.Usuario.infrastructure.dto.output.UsuarioOutputDTO;
+import com.example._Database_DB1.Usuario.domain.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,7 +13,7 @@ public class DeleteUsuarioController {
     DeleteUsuarioPort deleteUsuarioPort;
 
     @DeleteMapping("/id/{id}")
-    public void deleteById(@PathVariable int id) throws Exception {
+    public void deleteById(@PathVariable int id) throws NotFoundException {
 
         //Usuario usuario = usuarioInputDTO.Change(usuarioInputDTO); necesario??
         deleteUsuarioPort.deleteById(id);

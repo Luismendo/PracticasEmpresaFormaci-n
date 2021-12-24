@@ -1,2 +1,11 @@
-package com.example._Database_DB1.Usuario.infrastructure.dto.output;public class NotFoundException {
+package com.example._Database_DB1.Usuario.domain;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.ResponseStatus;
+
+@ResponseStatus(HttpStatus.NOT_FOUND)
+public class NotFoundException extends RuntimeException {
+    public NotFoundException(String message) {
+        super(message);
+    }
 }
