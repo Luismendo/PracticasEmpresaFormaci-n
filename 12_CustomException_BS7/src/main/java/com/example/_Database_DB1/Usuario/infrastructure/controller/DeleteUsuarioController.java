@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-public class DeleteUsuarioController extends HandleExceptions{
+public class DeleteUsuarioController{
     @Autowired
     DeleteUsuarioPort deleteUsuarioPort;
 
