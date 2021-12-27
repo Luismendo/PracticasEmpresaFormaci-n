@@ -36,7 +36,7 @@ public class Persona {
     @OneToOne
     @JoinColumn(name = "ID_PROFESOR")
     @MapsId
-    private com.example._Database_DB1.Student.domain.profesor profesor;
+    private com.example._Database_DB1.Student.domain.Profesor Profesor;
 
  */
 }

@@ -30,7 +30,7 @@ public class Student {
 
     /*
     @OneToOne(mappedBy = "id_profesor")
-    private com.example._Database_DB1.Student.domain.profesor profesor;
+    private com.example._Database_DB1.Student.domain.Profesor Profesor;
 
     @OneToMany(mappedBy = "Student", cascade = CascadeType.ALL)
     private com.example._Database_DB1.Student.domain.estudiante_asignatura estudiante_asignatura;

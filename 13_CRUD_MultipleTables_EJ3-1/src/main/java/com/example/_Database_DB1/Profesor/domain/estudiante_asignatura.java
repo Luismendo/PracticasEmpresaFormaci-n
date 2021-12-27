@@ -1,4 +1,4 @@
-/*
+package com.example._Database_DB1.Profesor.domain;/*
 package com.example._Database_DB1.Student.domain;
 
 
