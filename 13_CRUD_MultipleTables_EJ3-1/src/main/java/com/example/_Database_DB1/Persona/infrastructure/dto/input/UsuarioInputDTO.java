@@ -1,6 +1,6 @@
 package com.example._Database_DB1.Persona.infrastructure.dto.input;
 
-import com.example._Database_DB1.Persona.domain.persona;
+import com.example._Database_DB1.Persona.domain.Persona;
 import lombok.Data;
 import org.springframework.stereotype.Component;
 
@@ -24,8 +24,8 @@ public class UsuarioInputDTO{
 
 
 
-    public persona Change(UsuarioInputDTO usuarioInputDTO) {
-        persona persona = new persona();
+    public Persona Change(UsuarioInputDTO usuarioInputDTO) {
+        Persona persona = new Persona();
         //usuario.s.id = usuarioInputDTO.;
         persona.setUsuario(usuarioInputDTO.getUsuario());
         persona.setPassword(usuarioInputDTO.getPassword());

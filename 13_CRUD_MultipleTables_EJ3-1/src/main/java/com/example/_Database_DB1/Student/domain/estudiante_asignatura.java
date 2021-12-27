@@ -1,3 +1,4 @@
+/*
 package com.example._Database_DB1.Student.domain;
 
 
@@ -33,9 +34,10 @@ public class estudiante_asignatura {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "ID_STUDENT")
-    private com.example._Database_DB1.Student.domain.student student;
+    private com.example._Database_DB1.Student.domain.Student Student;
 
     @OneToOne(mappedBy = "id_profesor")
     private com.example._Database_DB1.Student.domain.profesor profesor;
 
 }
+*/

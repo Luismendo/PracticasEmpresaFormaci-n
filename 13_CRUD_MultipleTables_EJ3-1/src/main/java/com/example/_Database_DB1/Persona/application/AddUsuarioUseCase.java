@@ -2,7 +2,7 @@ package com.example._Database_DB1.Persona.application;
 
 import com.example._Database_DB1.Persona.application.Port.AddUsuarioPort;
 import com.example._Database_DB1.Persona.domain.UnprocesableException;
-import com.example._Database_DB1.Persona.domain.persona;
+import com.example._Database_DB1.Persona.domain.Persona;
 import com.example._Database_DB1.Persona.domain.UsuarioRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,11 +13,11 @@ public class AddUsuarioUseCase implements AddUsuarioPort {
     @Autowired
     UsuarioRepositorio usuarioRepositorio;
 
-    public void AddUser(persona persona){
+    public void AddUser(Persona persona){
         usuarioRepositorio.save(persona);
     }
 
-    public boolean validValues(persona persona) throws UnprocesableException {
+    public boolean validValues(Persona persona) throws UnprocesableException {
         if (persona.getUsuario()==null) {throw new UnprocesableException("Usuario no puede ser nulo"); }
         if (persona.getUsuario().length()>10) { throw new UnprocesableException("Longitud de usuario no puede ser superior a 10 caracteres");}
         if (persona.getPassword()==null) {throw new UnprocesableException("getPassword no puede ser nulo"); }
@@ -31,7 +31,7 @@ public class AddUsuarioUseCase implements AddUsuarioPort {
         return true;
     }
 
-    public void createUsuario(persona persona) throws UnprocesableException {
+    public void createUsuario(Persona persona) throws UnprocesableException {
         if(validValues(persona)){
             AddUser(persona);
         }

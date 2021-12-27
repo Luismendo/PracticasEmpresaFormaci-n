@@ -6,10 +6,10 @@ import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 
-public interface StudentRepositorio extends JpaRepository<student, String> {
+public interface StudentRepositorio extends JpaRepository<Student, String> {
 
-    @Query("select u from Usuario u where u.usuario = ?1")
-    List<student> findByName(String usuario);
+    @Query("select u from Student u where u.branch = ?1")
+    List<Student> findByName(String branch);
 
 
 }

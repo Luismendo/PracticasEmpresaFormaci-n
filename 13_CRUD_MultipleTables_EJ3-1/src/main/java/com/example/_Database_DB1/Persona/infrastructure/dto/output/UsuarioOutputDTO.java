@@ -1,6 +1,6 @@
 package com.example._Database_DB1.Persona.infrastructure.dto.output;
 
-import com.example._Database_DB1.Persona.domain.persona;
+import com.example._Database_DB1.Persona.domain.Persona;
 import lombok.Data;
 import org.springframework.stereotype.Component;
 
@@ -24,7 +24,7 @@ public class UsuarioOutputDTO{
     public UsuarioOutputDTO() {
     }
 
-    public UsuarioOutputDTO(persona persona) {
+    public UsuarioOutputDTO(Persona persona) {
         this.setUsuario(persona.getUsuario());
         this.setPassword(persona.getPassword());
         this.setName(persona.getName());

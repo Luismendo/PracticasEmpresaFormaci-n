@@ -1,3 +1,4 @@
+/*
 package com.example._Database_DB1.Student.domain;
 
 
@@ -27,7 +28,7 @@ public class profesor {
     @OneToOne(mappedBy = "id_persona")
     private com.example._Database_DB1.Student.domain.persona persona;
 
-     */
+
 
     @OneToOne
     @JoinColumn(name = "ID_ASIGNATURA")
@@ -37,6 +38,8 @@ public class profesor {
     @OneToOne
     @JoinColumn(name = "ID_STUDENT")
     @MapsId
-    private com.example._Database_DB1.Student.domain.student student;
+    private com.example._Database_DB1.Student.domain.Student Student;
+
 
 }
+*/

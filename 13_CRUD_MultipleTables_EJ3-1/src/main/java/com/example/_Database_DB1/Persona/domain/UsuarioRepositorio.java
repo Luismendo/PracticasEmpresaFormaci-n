@@ -5,10 +5,10 @@ import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 
-public interface UsuarioRepositorio extends JpaRepository<persona, Integer> {
+public interface UsuarioRepositorio extends JpaRepository<Persona, Integer> {
 
-    @Query("select u from persona u where u.persona = ?1")
-    List<persona> findByName(String persona);
+    @Query("select u from Persona u where u.usuario = ?1")
+    List<Persona> findByName(String persona);
 
 
 }

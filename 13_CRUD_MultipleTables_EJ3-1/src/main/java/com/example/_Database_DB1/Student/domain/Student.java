@@ -1,18 +1,21 @@
 package com.example._Database_DB1.Student.domain;
 
 
+import com.example._Database_DB1.Persona.domain.Persona;
 import com.sun.istack.NotNull;
 import lombok.Data;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 
 @Entity
 @Data
-public class student {
+public class Student {
+
     @Id
-    @GeneratedValue
     @Column(name = "ID_STUDENT")
     private String id_student;
+
     @NotNull
     private String branch;
     @NotNull
@@ -21,14 +24,15 @@ public class student {
     private int num_hours_week;
 
 
-    @OneToOne(mappedBy = "ID_PERSONA")
-    private com.example._Database_DB1.Persona.domain.persona persona;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_persona")
+    private Persona persona;
 
     /*
     @OneToOne(mappedBy = "id_profesor")
     private com.example._Database_DB1.Student.domain.profesor profesor;
 
-    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "Student", cascade = CascadeType.ALL)
     private com.example._Database_DB1.Student.domain.estudiante_asignatura estudiante_asignatura;
 
      */

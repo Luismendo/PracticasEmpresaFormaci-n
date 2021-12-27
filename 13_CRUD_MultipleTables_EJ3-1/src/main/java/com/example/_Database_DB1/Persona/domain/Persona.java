@@ -1,8 +1,6 @@
 package com.example._Database_DB1.Persona.domain;
 
 
-import com.example._Database_DB1.Student.domain.profesor;
-import com.example._Database_DB1.Student.domain.student;
 import lombok.Data;
 
 
@@ -11,10 +9,9 @@ import java.util.Date;
 
 @Entity
 @Data
-public class persona {
+public class Persona {
     @Id
     @GeneratedValue
-    @Column(name = "ID_PERSONA")
     private int id_persona;
 
     private String usuario;
@@ -34,10 +31,7 @@ public class persona {
     @Temporal(TemporalType.DATE)
     private Date termination_date;
 
-    @OneToOne
-    @JoinColumn(name = "ID_STUDENT")
-    @MapsId
-    private com.example._Database_DB1.Student.domain.student student;
+
 /*
     @OneToOne
     @JoinColumn(name = "ID_PROFESOR")
