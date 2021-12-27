@@ -9,27 +9,19 @@ import java.util.List;
 
 @Data
 @Component
-public class ListUsuarioOutputDTO {
-    private List<UsuarioOutputDTO> usuarioOutputDTOList = new ArrayList<UsuarioOutputDTO>();
-    private UsuarioOutputDTO usuarioOutputDTO;
+public class ListStudentOutputDTO {
+    private List<StudentOutputDTO> studentOutputDTOList = new ArrayList<StudentOutputDTO>();
+    private StudentOutputDTO studentOutputDTO;
 
-    public ListUsuarioOutputDTO() {
+    public ListStudentOutputDTO() {
     }
 
-    public ListUsuarioOutputDTO(List<student> personaList) {
-        //Mejor?
+    public ListStudentOutputDTO(List<student> personaList) {
         personaList.stream().forEach(elem ->
         {
-            this.usuarioOutputDTO = new UsuarioOutputDTO(elem);
-            this.usuarioOutputDTOList.add(this.usuarioOutputDTO);
+            this.studentOutputDTO = new StudentOutputDTO(elem);
+            this.studentOutputDTOList.add(this.studentOutputDTO);
         });
-
-        /*
-        for(int i = 0; i<usuarioList.size();i++){
-            this.usuarioOutputDTO = new UsuarioOutputDTO(usuarioList.get(i));
-            usuarioOutputDTOList.add(this.usuarioOutputDTO);
-        }
-        */
 
     }
 

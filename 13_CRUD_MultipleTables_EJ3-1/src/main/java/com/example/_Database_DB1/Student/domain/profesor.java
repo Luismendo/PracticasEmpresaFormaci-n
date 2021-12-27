@@ -23,8 +23,11 @@ public class profesor {
 
     private String id_persona;
 
+    /*
     @OneToOne(mappedBy = "id_persona")
     private com.example._Database_DB1.Student.domain.persona persona;
+
+     */
 
     @OneToOne
     @JoinColumn(name = "ID_ASIGNATURA")

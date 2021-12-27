@@ -9,7 +9,7 @@ import java.util.Date;
 
 @Data
 @Component
-public class UsuarioOutputDTO{
+public class StudentOutputDTO {
     private String branch;
     private String Comments;
     private int Num_hours_week;
@@ -26,10 +26,10 @@ public class UsuarioOutputDTO{
     private String imagen_url;
     private Date termination_date;
 
-    public UsuarioOutputDTO() {
+    public StudentOutputDTO() {
     }
 
-    public UsuarioOutputDTO(student student) {
+    public StudentOutputDTO(student student) {
         this.setBranch(student.getBranch());
         this.setComments(student.getComments());
         this.setNum_hours_week(student.getNum_hours_week());

@@ -1,7 +1,8 @@
 package com.example._Database_DB1.Student.application.Port;
 
-import com.example._Database_DB1.Student.domain.NotFoundException;
+import com.example._Database_DB1.Persona.domain.NotFoundException;
 
-public interface DeleteUsuarioPort {
+
+public interface DeleteStudentPort {
     public void deleteById(String id) throws NotFoundException;
 }

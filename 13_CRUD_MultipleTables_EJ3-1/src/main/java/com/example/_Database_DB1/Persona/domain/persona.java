@@ -1,6 +1,8 @@
 package com.example._Database_DB1.Persona.domain;
 
 
+import com.example._Database_DB1.Student.domain.profesor;
+import com.example._Database_DB1.Student.domain.student;
 import lombok.Data;
 
 
@@ -35,10 +37,12 @@ public class persona {
     @OneToOne
     @JoinColumn(name = "ID_STUDENT")
     @MapsId
-    private student student;
-
+    private com.example._Database_DB1.Student.domain.student student;
+/*
     @OneToOne
     @JoinColumn(name = "ID_PROFESOR")
     @MapsId
-    private profesor profesor;
+    private com.example._Database_DB1.Student.domain.profesor profesor;
+
+ */
 }

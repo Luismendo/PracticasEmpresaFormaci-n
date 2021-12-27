@@ -1,15 +1,15 @@
 package com.example._Database_DB1.Student.application;
 
-import com.example._Database_DB1.Student.application.Port.AddUsuarioPort;
+import com.example._Database_DB1.Student.application.Port.AddStudentPort;
 import com.example._Database_DB1.Student.domain.StudentRepositorio;
-import com.example._Database_DB1.Student.domain.UnprocesableException;
+import com.example._Database_DB1.Persona.domain.UnprocesableException;
 import com.example._Database_DB1.Student.domain.student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
 @Service
-public class AddUsuarioUseCase implements AddUsuarioPort {
+public class AddStudentUseCase implements AddStudentPort {
     @Autowired
     StudentRepositorio studentRepositorio;
 

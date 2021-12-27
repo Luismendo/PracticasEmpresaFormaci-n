@@ -1,17 +1,14 @@
 package com.example._Database_DB1.Student.infrastructure.dto.input;
 
 import com.example._Database_DB1.Persona.domain.UsuarioRepositorio;
-import com.example._Database_DB1.Persona.domain.persona;
 import com.example._Database_DB1.Student.domain.student;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.util.Date;
-
 @Data
 @Component
-public class UsuarioInputDTO{
+public class StudentInputDTO {
     @Autowired
     UsuarioRepositorio usuarioRepositorio;
 
@@ -37,13 +34,13 @@ public class UsuarioInputDTO{
 
 
 
-    public student Change(UsuarioInputDTO usuarioInputDTO) {
+    public student Change(StudentInputDTO studentInputDTO) {
         student student = new student();
 
-        student.setBranch(usuarioInputDTO.getBranch());
-        student.setNum_hours_week(usuarioInputDTO.getNum_hours_week());
-        student.setComments(usuarioInputDTO.getComments());
-        student.setPersona(usuarioRepositorio.getById(usuarioInputDTO.getId_persona()));
+        student.setBranch(studentInputDTO.getBranch());
+        student.setNum_hours_week(studentInputDTO.getNum_hours_week());
+        student.setComments(studentInputDTO.getComments());
+        student.setPersona(usuarioRepositorio.getById(studentInputDTO.getId_persona()));
 
 
         return student;
