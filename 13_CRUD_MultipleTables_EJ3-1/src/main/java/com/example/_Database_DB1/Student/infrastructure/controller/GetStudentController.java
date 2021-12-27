@@ -5,18 +5,17 @@ import com.example._Database_DB1.Student.infrastructure.dto.output.ListUsuarioOu
 import com.example._Database_DB1.Student.infrastructure.dto.output.UsuarioOutputDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
 @RestController
-public class SearchByNameUsuarioController {
+public class GetUsuarioController {
     @Autowired
     GetUsuarioPort getUsuarioPort;
 
-    @GetMapping("name/{name}")
-    public List<UsuarioOutputDTO> getByName(@PathVariable String name){
-        return new ListUsuarioOutputDTO(getUsuarioPort.getByName(name)).getUsuarioOutputDTOList();
+    @GetMapping("/usuario")
+    public List<UsuarioOutputDTO> getAll(){
+        return new ListUsuarioOutputDTO(getUsuarioPort.getAll()).getUsuarioOutputDTOList();
     }
 }

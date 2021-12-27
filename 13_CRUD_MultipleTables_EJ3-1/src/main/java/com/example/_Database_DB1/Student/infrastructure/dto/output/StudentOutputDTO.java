@@ -1,6 +1,7 @@
 package com.example._Database_DB1.Student.infrastructure.dto.output;
 
-import com.example._Database_DB1.Student.domain.persona;
+
+import com.example._Database_DB1.Student.domain.student;
 import lombok.Data;
 import org.springframework.stereotype.Component;
 
@@ -9,6 +10,10 @@ import java.util.Date;
 @Data
 @Component
 public class UsuarioOutputDTO{
+    private String branch;
+    private String Comments;
+    private int Num_hours_week;
+
     private String usuario;
     private String password;
     private String name;
@@ -24,7 +29,12 @@ public class UsuarioOutputDTO{
     public UsuarioOutputDTO() {
     }
 
-    public UsuarioOutputDTO(persona persona) {
+    public UsuarioOutputDTO(student student) {
+        this.setBranch(student.getBranch());
+        this.setComments(student.getComments());
+        this.setNum_hours_week(student.getNum_hours_week());
+
+        /*
         this.setUsuario(persona.getUsuario());
         this.setPassword(persona.getPassword());
         this.setName(persona.getName());
@@ -36,6 +46,8 @@ public class UsuarioOutputDTO{
         this.setCreated_date(persona.getCreated_date());
         this.setImagen_url(persona.getImagen_url());
         this.setTermination_date(persona.getTermination_date());
+
+         */
 
     }
 

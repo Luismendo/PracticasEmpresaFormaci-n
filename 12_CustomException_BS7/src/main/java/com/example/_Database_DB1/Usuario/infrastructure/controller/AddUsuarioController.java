@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-public class AddUsuarioController {
+public class AddUsuarioController extends HandleExceptions{
     @Autowired
     AddUsuarioPort addUsuarioPort;
 

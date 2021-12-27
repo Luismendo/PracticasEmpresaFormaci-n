@@ -12,8 +12,8 @@ public class DeleteUsuarioController {
     @Autowired
     DeleteUsuarioPort deleteUsuarioPort;
 
-    @DeleteMapping("/id/{id}")
-    public void deleteById(@PathVariable int id) throws NotFoundException {
+    @DeleteMapping("usuario/id/{id}")
+    public void deleteById(@PathVariable String id) throws NotFoundException {
 
         //Usuario usuario = usuarioInputDTO.Change(usuarioInputDTO); necesario??
         deleteUsuarioPort.deleteById(id);

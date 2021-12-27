@@ -1,6 +1,6 @@
 package com.example._Database_DB1.Student.infrastructure.dto.output;
 
-import com.example._Database_DB1.Student.domain.persona;
+import com.example._Database_DB1.Student.domain.student;
 import lombok.Data;
 import org.springframework.stereotype.Component;
 
@@ -16,7 +16,7 @@ public class ListUsuarioOutputDTO {
     public ListUsuarioOutputDTO() {
     }
 
-    public ListUsuarioOutputDTO(List<persona> personaList) {
+    public ListUsuarioOutputDTO(List<student> personaList) {
         //Mejor?
         personaList.stream().forEach(elem ->
         {
