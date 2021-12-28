@@ -21,7 +21,9 @@ public class AddStudentUseCase implements AddStudentPort {
 
     public boolean validValues(Student student) throws UnprocesableException {
         System.out.println("LOOOOOOOOOOOOOOOOOOOOOOOL");
-        if (student.getBranch()==null) {throw new UnprocesableException("Usuario no puede ser nulo"); }
+        if(student.getBranch()==null) {throw new UnprocesableException("Usuario no puede ser nulo"); }
+        if(student.getPersona_student().getProfesor() != null){throw new UnprocesableException("Studient no puede ser profesor"); }
+
         return true;
     }
 
