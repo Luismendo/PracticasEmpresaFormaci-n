@@ -1,7 +1,9 @@
-/*
-package com.example._Database_DB1.Student.domain;
+package com.example._Database_DB1.Student_Asignatura.domain;
 
 
+
+import com.example._Database_DB1.Profesor.domain.Profesor;
+import com.example._Database_DB1.Student.domain.Student;
 import com.sun.istack.NotNull;
 import lombok.Data;
 
@@ -10,34 +12,27 @@ import java.util.Date;
 
 @Entity
 @Data
-public class estudiante_asignatura {
+public class Student_Asignatura {
     @Id
-    @GeneratedValue
     @Column(name = "ID_ASIGNATURA")
     private String id_asignatura;
+
     @NotNull
     private String asignatura;
     @NotNull
     private String coments;
-    @NotNull
-    private Date initial_date;
 
     @Temporal(TemporalType.DATE)
     @NotNull
-    private Date init_date;
+    private Date initial_date;
     @Temporal(TemporalType.DATE)
     @NotNull
     private Date finish_date;
 
-
-    private String id_persona;
-
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, optional = true)
     @JoinColumn(name = "ID_STUDENT")
-    private com.example._Database_DB1.Student.domain.Student Student;
+    private Student student_asig;
 
-    @OneToOne(mappedBy = "id_profesor")
-    private com.example._Database_DB1.Student.domain.Profesor Profesor;
 
 }
-*/
+

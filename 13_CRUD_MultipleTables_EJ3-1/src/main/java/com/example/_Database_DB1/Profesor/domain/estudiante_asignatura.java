@@ -10,7 +10,7 @@ import java.util.Date;
 
 @Entity
 @Data
-public class estudiante_asignatura {
+public class Student_Asignatura {
     @Id
     @GeneratedValue
     @Column(name = "ID_ASIGNATURA")

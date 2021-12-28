@@ -34,7 +34,7 @@ public class Profesor {
     @OneToOne
     @JoinColumn(name = "ID_ASIGNATURA")
     @MapsId
-    private com.example._Database_DB1.Student.domain.estudiante_asignatura estudiante_asignatura;
+    private com.example._Database_DB1.Student.domain.Student_Asignatura Student_Asignatura;
 
     @OneToOne
     @JoinColumn(name = "ID_STUDENT")

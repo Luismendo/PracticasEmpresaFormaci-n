@@ -2,11 +2,13 @@ package com.example._Database_DB1.Student.domain;
 
 
 import com.example._Database_DB1.Persona.domain.Persona;
+import com.example._Database_DB1.Student_Asignatura.domain.Student_Asignatura;
 import com.sun.istack.NotNull;
 import lombok.Data;
-import org.hibernate.annotations.GenericGenerator;
-
 import javax.persistence.*;
+import java.security.cert.TrustAnchor;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Data
@@ -28,14 +30,13 @@ public class Student {
     @JoinColumn(name = "id_persona")
     private Persona persona_student;
 
+    @OneToMany(mappedBy = "student_asig", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Student_Asignatura> student_asignaturaList = new ArrayList<Student_Asignatura>();
+
 
     /*
     @OneToOne(mappedBy = "id_profesor")
     private com.example._Database_DB1.Student.domain.Profesor Profesor;
-
-    @OneToMany(mappedBy = "Student", cascade = CascadeType.ALL)
-    private com.example._Database_DB1.Student.domain.estudiante_asignatura estudiante_asignatura;
-
      */
 
 }
