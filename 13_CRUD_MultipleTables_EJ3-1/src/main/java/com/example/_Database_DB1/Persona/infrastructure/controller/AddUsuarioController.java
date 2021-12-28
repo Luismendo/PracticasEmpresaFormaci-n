@@ -5,7 +5,7 @@ import com.example._Database_DB1.Persona.application.Port.AddUsuarioPort;
 import com.example._Database_DB1.Persona.domain.UnprocesableException;
 import com.example._Database_DB1.Persona.domain.Persona;
 import com.example._Database_DB1.Persona.infrastructure.dto.input.UsuarioInputDTO;
-import com.example._Database_DB1.Persona.infrastructure.dto.output.UsuarioOutputDTO;
+import com.example._Database_DB1.Persona.infrastructure.dto.output.SimplePersonaOutputDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,10 +15,10 @@ public class AddUsuarioController {
     AddUsuarioPort addUsuarioPort;
 
     @PostMapping
-    public UsuarioOutputDTO insert(@RequestBody UsuarioInputDTO usuarioInputDTO) throws UnprocesableException {
+    public SimplePersonaOutputDTO insert(@RequestBody UsuarioInputDTO usuarioInputDTO) throws UnprocesableException {
         Persona persona = usuarioInputDTO.Change(usuarioInputDTO);
         addUsuarioPort.createUsuario(persona);
-        return  new UsuarioOutputDTO(persona);
+        return  new SimplePersonaOutputDTO(persona);
     }
 
 }

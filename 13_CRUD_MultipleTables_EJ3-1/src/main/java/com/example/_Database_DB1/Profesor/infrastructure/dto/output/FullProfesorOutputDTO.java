@@ -37,17 +37,17 @@ public class FullProfesorOutputDTO {
 
 
 
-        this.setUsuario(profesor.getPersona().getUsuario());
-        this.setPassword(profesor.getPersona().getPassword());
-        this.setName(profesor.getPersona().getName());
-        this.setSurname(profesor.getPersona().getSurname());
-        this.setCompany_email(profesor.getPersona().getCompany_email());
-        this.setPersonal_email(profesor.getPersona().getPersonal_email());
-        this.setCity(profesor.getPersona().getCity());
-        this.setActive(profesor.getPersona().getActive());
-        this.setCreated_date(profesor.getPersona().getCreated_date());
-        this.setImagen_url(profesor.getPersona().getImagen_url());
-        this.setTermination_date(profesor.getPersona().getTermination_date());
+        this.setUsuario(profesor.getPersona_profesor().getUsuario());
+        this.setPassword(profesor.getPersona_profesor().getPassword());
+        this.setName(profesor.getPersona_profesor().getName());
+        this.setSurname(profesor.getPersona_profesor().getSurname());
+        this.setCompany_email(profesor.getPersona_profesor().getCompany_email());
+        this.setPersonal_email(profesor.getPersona_profesor().getPersonal_email());
+        this.setCity(profesor.getPersona_profesor().getCity());
+        this.setActive(profesor.getPersona_profesor().getActive());
+        this.setCreated_date(profesor.getPersona_profesor().getCreated_date());
+        this.setImagen_url(profesor.getPersona_profesor().getImagen_url());
+        this.setTermination_date(profesor.getPersona_profesor().getTermination_date());
     }
 
 }

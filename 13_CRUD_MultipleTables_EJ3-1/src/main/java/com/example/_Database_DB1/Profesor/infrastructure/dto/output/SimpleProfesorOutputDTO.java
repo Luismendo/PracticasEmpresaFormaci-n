@@ -7,21 +7,21 @@ import org.springframework.stereotype.Component;
 
 @Data
 @Component
-public class SimpleStudentOutputDTO {
+public class SimpleProfesorOutputDTO {
     private String id;
     private String branch;
     private String Comments;
     private int Num_hours_week;
     private int id_person;
 
-    public SimpleStudentOutputDTO() {
+    public SimpleProfesorOutputDTO() {
     }
 
-    public SimpleStudentOutputDTO(Profesor profesor) {
+    public SimpleProfesorOutputDTO(Profesor profesor) {
         this.setId(profesor.getId_profesor());
         this.setBranch(profesor.getBranch());
         this.setComments(profesor.getComents());
-        this.setId_person(profesor.getPersona().getId_persona());
+        this.setId_person(profesor.getPersona_profesor().getId_persona());
 
     }
 

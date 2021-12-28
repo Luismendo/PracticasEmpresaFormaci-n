@@ -36,10 +36,11 @@ public class ProfesorInputDTO {
     public Profesor Change(ProfesorInputDTO studentInputDTO, GetUsuarioPort getUsuarioPort) {
         Profesor profesor = new Profesor();
 
+        profesor.setId_profesor(studentInputDTO.getId());
         profesor.setBranch(studentInputDTO.getBranch());
         profesor.setComents(studentInputDTO.getComments());
 
-        profesor.setPersona(getUsuarioPort.getById(this.getId_persona()));
+        profesor.setPersona_profesor(getUsuarioPort.getById(this.getId_persona()));
 
         return profesor;
     }

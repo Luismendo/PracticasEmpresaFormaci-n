@@ -9,14 +9,14 @@ import java.util.List;
 
 @Data
 @Component
-public class ListStudentOutputDTO {
+public class ListProfesorOutputDTO {
     private List<FullProfesorOutputDTO> fullProfesorOutputDTOList = new ArrayList<FullProfesorOutputDTO>();
     private FullProfesorOutputDTO fullProfesorOutputDTO;
 
-    public ListStudentOutputDTO() {
+    public ListProfesorOutputDTO() {
     }
 
-    public ListStudentOutputDTO(List<Profesor> personaList) {
+    public ListProfesorOutputDTO(List<Profesor> personaList) {
         personaList.stream().forEach(elem ->
         {
             this.fullProfesorOutputDTO = new FullProfesorOutputDTO(elem);

@@ -41,7 +41,7 @@ public class StudentInputDTO {
         student.setBranch(studentInputDTO.getBranch());
         student.setNum_hours_week(studentInputDTO.getNum_hours_week());
         student.setComments(studentInputDTO.getComments());
-        student.setPersona(getUsuarioPort.getById(this.getId_persona()));
+        student.setPersona_student(getUsuarioPort.getById(this.getId_persona()));
 
 
         return student;

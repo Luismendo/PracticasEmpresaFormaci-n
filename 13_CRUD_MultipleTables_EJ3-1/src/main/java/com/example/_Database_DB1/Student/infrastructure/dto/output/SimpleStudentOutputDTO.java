@@ -24,7 +24,7 @@ public class SimpleStudentOutputDTO {
         this.setBranch(student.getBranch());
         this.setComments(student.getComments());
         this.setNum_hours_week(student.getNum_hours_week());
-        this.setId_person(student.getPersona().getId_persona());
+        this.setId_person(student.getPersona_student().getId_persona());
 
     }
 

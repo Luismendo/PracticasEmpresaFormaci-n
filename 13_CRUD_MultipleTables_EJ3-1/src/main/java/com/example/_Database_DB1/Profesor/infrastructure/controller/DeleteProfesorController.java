@@ -8,14 +8,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class DeleteStudentController {
+public class DeleteProfesorController {
     @Autowired
     DeleteProfesorPort deleteProfesorPort;
 
-    @DeleteMapping("usuario/id/{id}")
+    @DeleteMapping("/Profesor/id/{id}")
     public void deleteById(@PathVariable String id) throws NotFoundException {
-
-        //Usuario usuario = usuarioInputDTO.Change(usuarioInputDTO); necesario??
         deleteProfesorPort.deleteById(id);
 
     }

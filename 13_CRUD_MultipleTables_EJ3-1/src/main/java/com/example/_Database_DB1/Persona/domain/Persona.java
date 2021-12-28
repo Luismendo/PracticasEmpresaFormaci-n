@@ -1,6 +1,8 @@
 package com.example._Database_DB1.Persona.domain;
 
 
+import com.example._Database_DB1.Profesor.domain.Profesor;
+import com.example._Database_DB1.Student.domain.Student;
 import lombok.Data;
 
 
@@ -30,6 +32,12 @@ public class Persona {
 
     @Temporal(TemporalType.DATE)
     private Date termination_date;
+
+    @OneToOne(mappedBy = "persona_profesor",fetch = FetchType.LAZY)
+    private Profesor profesor;
+
+    @OneToOne(mappedBy = "persona_student",fetch = FetchType.LAZY)
+    private Student student;
 
 
 /*

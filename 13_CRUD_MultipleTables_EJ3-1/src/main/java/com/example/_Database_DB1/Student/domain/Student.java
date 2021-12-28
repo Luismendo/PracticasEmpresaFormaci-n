@@ -26,7 +26,8 @@ public class Student {
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_persona")
-    private Persona persona;
+    private Persona persona_student;
+
 
     /*
     @OneToOne(mappedBy = "id_profesor")

@@ -37,17 +37,17 @@ public class FullStudentOutputDTO {
         this.setNum_hours_week(student.getNum_hours_week());
 
 
-        this.setUsuario(student.getPersona().getUsuario());
-        this.setPassword(student.getPersona().getPassword());
-        this.setName(student.getPersona().getName());
-        this.setSurname(student.getPersona().getSurname());
-        this.setCompany_email(student.getPersona().getCompany_email());
-        this.setPersonal_email(student.getPersona().getPersonal_email());
-        this.setCity(student.getPersona().getCity());
-        this.setActive(student.getPersona().getActive());
-        this.setCreated_date(student.getPersona().getCreated_date());
-        this.setImagen_url(student.getPersona().getImagen_url());
-        this.setTermination_date(student.getPersona().getTermination_date());
+        this.setUsuario(student.getPersona_student().getUsuario());
+        this.setPassword(student.getPersona_student().getPassword());
+        this.setName(student.getPersona_student().getName());
+        this.setSurname(student.getPersona_student().getSurname());
+        this.setCompany_email(student.getPersona_student().getCompany_email());
+        this.setPersonal_email(student.getPersona_student().getPersonal_email());
+        this.setCity(student.getPersona_student().getCity());
+        this.setActive(student.getPersona_student().getActive());
+        this.setCreated_date(student.getPersona_student().getCreated_date());
+        this.setImagen_url(student.getPersona_student().getImagen_url());
+        this.setTermination_date(student.getPersona_student().getTermination_date());
     }
 
 }
