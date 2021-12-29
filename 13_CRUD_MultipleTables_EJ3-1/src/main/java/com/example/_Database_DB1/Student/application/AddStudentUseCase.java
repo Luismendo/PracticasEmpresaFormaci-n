@@ -48,18 +48,27 @@ public class AddStudentUseCase implements AddStudentPort {
     public void AddAsigToUser(String id_student, List<String> listIdAsig) throws UnprocesableException {
 
         if(studentRepositorio.getById(id_student) != null){
-            Student student = studentRepositorio.getById(id_student);
-            List<Student_Asignatura> student_asignaturaList = new ArrayList<>();
+            //Student student = studentRepositorio.getById(id_student);
+            //List<Student_Asignatura> student_asignaturaList = new ArrayList<>();
             listIdAsig.stream().forEach(elem ->
             {
                 if(student_asignaturaRepositorio.findById(String.valueOf(elem)).get() != null){
-                    student_asignaturaList.add(student_asignaturaRepositorio.findById(String.valueOf(elem)).get());
+
+                    //student_asignaturaList.add(student_asignaturaRepositorio.findById(String.valueOf(elem)).get());
+                    Student_Asignatura student_asignatura = new Student_Asignatura(student_asignaturaRepositorio.findById(String.valueOf(elem)).get());
+
+                    String id_need = String.valueOf(Integer.parseInt(student_asignaturaRepositorio.findMax()) + 1);
+                    student_asignatura.setId_asignatura(id_need);
+                    student_asignatura.setStudent_asig(studentRepositorio.getById(id_student));
+                    student_asignaturaRepositorio.save(student_asignatura);
+
                 }
 
             });
 
-            student.setStudent_asignaturaList(student_asignaturaList);
-            studentRepositorio.save(student);
+            //no hace nada
+            //student.setStudent_asignaturaList(student_asignaturaList);
+            //studentRepositorio.save(student);
         }
     }
 }

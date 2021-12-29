@@ -31,7 +31,7 @@ public class Student {
     @JoinColumn(name = "id_persona")
     private Persona persona_student;
 
-    @OneToMany(targetEntity=Student_Asignatura.class, mappedBy = "student_asig", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(orphanRemoval = true, mappedBy = "student_asig", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Student_Asignatura> student_asignaturaList = new ArrayList<>();
 
     @ManyToOne(fetch = FetchType.LAZY, optional = true)

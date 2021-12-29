@@ -33,6 +33,18 @@ public class Student_Asignatura {
     @JoinColumn(name = "ID_STUDENT")
     private Student student_asig;
 
+    public Student_Asignatura() {
+    }
+
+    public Student_Asignatura(Student_Asignatura student_asignatura) {
+        this.id_asignatura = student_asignatura.getId_asignatura();
+        this.asignatura = student_asignatura.getAsignatura();
+        this.coments = student_asignatura.getComents();
+        this.initial_date = student_asignatura.getInitial_date();
+        this.finish_date = student_asignatura.getFinish_date();
+        this.student_asig = student_asignatura.getStudent_asig();
+    }
+
 
 }
 

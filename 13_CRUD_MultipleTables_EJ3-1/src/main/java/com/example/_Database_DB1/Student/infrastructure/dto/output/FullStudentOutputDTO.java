@@ -30,6 +30,7 @@ public class FullStudentOutputDTO {
 
     //private Pair<Integer, String> mi_profe;
     private Map<Integer, String> mi_profe = new HashMap<Integer, String>();
+    private List<String> mis_asignaturas = new ArrayList<>();
 
     public FullStudentOutputDTO() {
     }
@@ -57,6 +58,12 @@ public class FullStudentOutputDTO {
         if(student.getMi_profesor() != null){
 
             this.mi_profe.put(Integer.parseInt(student.getMi_profesor().getId_profesor()),student.getMi_profesor().getPersona_profesor().getName());
+        }
+
+        if(student.getStudent_asignaturaList() != null){
+            student.getStudent_asignaturaList().stream().forEach(elem ->{
+                this.mis_asignaturas.add(elem.getAsignatura());
+            });
         }
 
     }
