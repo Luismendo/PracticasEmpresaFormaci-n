@@ -21,7 +21,7 @@ public class Student_AsignaturaInputDTO {
     private Date init_day;
     private Date fin_day;
 
-    private int id_persona;
+    private String id_persona;
 
 
 
@@ -36,8 +36,13 @@ public class Student_AsignaturaInputDTO {
         student_asignatura.setInitial_date(student_asignaturaInputDTO.getInit_day());
         student_asignatura.setFinish_date(student_asignaturaInputDTO.getFin_day());
 
-        student_asignatura.setStudent_asig(null);
-        //student_asignatura.setStudent_asig(getStudentPort.getById(student_asignaturaInputDTO.getId()));
+        //student_asignatura.setStudent_asig(null);
+        if(student_asignaturaInputDTO.getId_persona() != null){
+            student_asignatura.setStudent_asig(getStudentPort.getById(student_asignaturaInputDTO.getId_persona()));
+        }else {
+            student_asignatura.setStudent_asig(null);
+        }
+
 
 
         return student_asignatura;

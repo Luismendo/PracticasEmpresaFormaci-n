@@ -37,11 +37,13 @@ public class FullAsignaturaOutputDTO {
         this.setFin_day(student_asignatura.getFinish_date());
 
 
+        if(student_asignatura.getStudent_asig() != null){
+            this.setId_student(student_asignatura.getStudent_asig().getId_student());
+            this.setBranch_student(student_asignatura.getStudent_asig().getBranch());
+            this.setComment_student(student_asignatura.getStudent_asig().getComments());
+            this.setHours_student(student_asignatura.getStudent_asig().getNum_hours_week());
+        }
 
-        this.setId_student(student_asignatura.getStudent_asig().getId_student());
-        this.setBranch_student(student_asignatura.getStudent_asig().getBranch());
-        this.setComment_student(student_asignatura.getStudent_asig().getComments());
-        this.setHours_student(student_asignatura.getStudent_asig().getNum_hours_week());
 
     }
 

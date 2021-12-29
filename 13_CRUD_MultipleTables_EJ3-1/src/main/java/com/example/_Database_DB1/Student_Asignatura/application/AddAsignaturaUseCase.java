@@ -15,7 +15,7 @@ public class AddAsignaturaUseCase implements AddAsignaturaPort {
 
     public void AddUser(Student_Asignatura student_asignatura){
         System.out.println("LOOOOOOOOOOOOOOOOOOOOOOOL2");
-        System.out.println(student_asignatura);
+        //System.out.println(student_asignatura);
         student_asignaturaRepositorio.save(student_asignatura);
     }
 

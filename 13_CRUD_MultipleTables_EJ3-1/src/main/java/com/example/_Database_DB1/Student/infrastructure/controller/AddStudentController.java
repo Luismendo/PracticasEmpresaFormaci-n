@@ -2,6 +2,7 @@ package com.example._Database_DB1.Student.infrastructure.controller;
 
 
 import com.example._Database_DB1.Persona.application.Port.GetUsuarioPort;
+import com.example._Database_DB1.Profesor.application.Port.GetProfesorPort;
 import com.example._Database_DB1.Student.application.Port.AddStudentPort;
 import com.example._Database_DB1.Persona.domain.UnprocesableException;
 import com.example._Database_DB1.Student.domain.Student;
@@ -18,10 +19,12 @@ public class AddStudentController {
     AddStudentPort addStudentPort;
     @Autowired
     GetUsuarioPort getUsuarioPort;
+    @Autowired
+    GetProfesorPort getProfesorPort;
 
     @PostMapping("/Student")
     public FullStudentOutputDTO insert(@RequestBody StudentInputDTO studentInputDTO) throws UnprocesableException {
-        Student student = studentInputDTO.Change(studentInputDTO, getUsuarioPort);
+        Student student = studentInputDTO.Change(studentInputDTO, getUsuarioPort, getProfesorPort);
         addStudentPort.createUsuario(student);
         return  new FullStudentOutputDTO(student);
     }

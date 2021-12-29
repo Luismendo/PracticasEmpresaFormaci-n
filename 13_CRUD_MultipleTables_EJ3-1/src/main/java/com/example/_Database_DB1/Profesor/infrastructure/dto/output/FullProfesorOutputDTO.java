@@ -2,10 +2,11 @@ package com.example._Database_DB1.Profesor.infrastructure.dto.output;
 
 
 import com.example._Database_DB1.Profesor.domain.Profesor;
+import com.example._Database_DB1.Student.domain.Student;
 import lombok.Data;
 import org.springframework.stereotype.Component;
 
-import java.util.Date;
+import java.util.*;
 
 @Data
 @Component
@@ -26,6 +27,9 @@ public class FullProfesorOutputDTO {
     private Date created_date;
     private String imagen_url;
     private Date termination_date;
+
+    private Map<Integer, String> mis_estudiantes = new HashMap<Integer, String>();
+    //private List<String> mis_estudiantes = new ArrayList<>();
 
     public FullProfesorOutputDTO() {
     }
@@ -48,6 +52,13 @@ public class FullProfesorOutputDTO {
         this.setCreated_date(profesor.getPersona_profesor().getCreated_date());
         this.setImagen_url(profesor.getPersona_profesor().getImagen_url());
         this.setTermination_date(profesor.getPersona_profesor().getTermination_date());
+
+        if(!profesor.getStudentList().isEmpty()){
+            profesor.getStudentList().stream().forEach(elem ->
+            {
+                this.mis_estudiantes.put(Integer.parseInt(elem.getId_student()),elem.getPersona_student().getName());
+            });
+        }
     }
 
 }

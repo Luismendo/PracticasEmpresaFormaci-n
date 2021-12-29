@@ -3,9 +3,10 @@ package com.example._Database_DB1.Student.infrastructure.dto.output;
 
 import com.example._Database_DB1.Student.domain.Student;
 import lombok.Data;
+import org.javatuples.Pair;
 import org.springframework.stereotype.Component;
 
-import java.util.Date;
+import java.util.*;
 
 @Data
 @Component
@@ -26,6 +27,9 @@ public class FullStudentOutputDTO {
     private Date created_date;
     private String imagen_url;
     private Date termination_date;
+
+    //private Pair<Integer, String> mi_profe;
+    private Map<Integer, String> mi_profe = new HashMap<Integer, String>();
 
     public FullStudentOutputDTO() {
     }
@@ -48,6 +52,13 @@ public class FullStudentOutputDTO {
         this.setCreated_date(student.getPersona_student().getCreated_date());
         this.setImagen_url(student.getPersona_student().getImagen_url());
         this.setTermination_date(student.getPersona_student().getTermination_date());
+        student.getMi_profesor().getStudentList();
+
+        if(student.getMi_profesor() != null){
+
+            this.mi_profe.put(Integer.parseInt(student.getMi_profesor().getId_profesor()),student.getMi_profesor().getPersona_profesor().getName());
+        }
+
     }
 
 }

@@ -2,6 +2,7 @@ package com.example._Database_DB1.Student.domain;
 
 
 import com.example._Database_DB1.Persona.domain.Persona;
+import com.example._Database_DB1.Profesor.domain.Profesor;
 import com.example._Database_DB1.Student_Asignatura.domain.Student_Asignatura;
 import com.sun.istack.NotNull;
 import lombok.Data;
@@ -30,13 +31,11 @@ public class Student {
     @JoinColumn(name = "id_persona")
     private Persona persona_student;
 
-    @OneToMany(mappedBy = "student_asig", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Student_Asignatura> student_asignaturaList = new ArrayList<Student_Asignatura>();
+    @OneToMany(targetEntity=Student_Asignatura.class, mappedBy = "student_asig", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Student_Asignatura> student_asignaturaList = new ArrayList<>();
 
-
-    /*
-    @OneToOne(mappedBy = "id_profesor")
-    private com.example._Database_DB1.Student.domain.Profesor Profesor;
-     */
+    @ManyToOne(fetch = FetchType.LAZY, optional = true)
+    @JoinColumn(name = "ID_PROFESOR")
+    private Profesor mi_profesor;
 
 }

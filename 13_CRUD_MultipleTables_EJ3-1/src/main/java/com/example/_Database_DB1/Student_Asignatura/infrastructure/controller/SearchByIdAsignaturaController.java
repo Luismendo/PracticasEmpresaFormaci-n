@@ -17,15 +17,15 @@ public class SearchByIdAsignaturaController {
     @Autowired
     GetAsignaturaPort getAsignaturaPort;
 
-    @GetMapping("/Asignatura/{id}")
+    @GetMapping("/Asignatura_estudent/{id}")
     public String getById(@PathVariable String id, @RequestParam(defaultValue = "simple") String outputType) throws NotFoundException, JsonProcessingException {
         ObjectMapper objectMapper = new ObjectMapper();
         String JSon;
 
         if(outputType.equals("full")) {
-            JSon = objectMapper.writeValueAsString(new FullListAsignatura_StudentOutputDTO(getAsignaturaPort.getByIdStudent(id)));
+            JSon = objectMapper.writeValueAsString(new FullListAsignatura_StudentOutputDTO(getAsignaturaPort.getByIdStudent(id)).getFullAsignaturaOutputDTOList());
         }else {
-            JSon = objectMapper.writeValueAsString(new SimpleListAsignatura_StudentOutputDTO(getAsignaturaPort.getByIdStudent(id)));
+            JSon = objectMapper.writeValueAsString(new SimpleListAsignatura_StudentOutputDTO(getAsignaturaPort.getByIdStudent(id)).getSimpleAsignaturaOutputDTOList());
         }
         return JSon;
 
