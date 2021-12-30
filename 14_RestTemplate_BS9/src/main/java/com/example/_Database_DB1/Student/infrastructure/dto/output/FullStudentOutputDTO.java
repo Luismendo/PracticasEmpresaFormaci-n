@@ -3,7 +3,6 @@ package com.example._Database_DB1.Student.infrastructure.dto.output;
 
 import com.example._Database_DB1.Student.domain.Student;
 import lombok.Data;
-import org.javatuples.Pair;
 import org.springframework.stereotype.Component;
 
 import java.util.*;
