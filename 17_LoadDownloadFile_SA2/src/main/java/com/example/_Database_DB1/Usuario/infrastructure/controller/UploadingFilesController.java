@@ -36,7 +36,7 @@ public class UploadingFilesController {
             attributes.addFlashAttribute("message","Profavor seleccione archivo");
             return "redirect:status";
         }
-        
+
         StringBuilder builder = new StringBuilder();
         builder.append(File.separator);
         builder.append("Users/luis.mendoza/IdeaProjects/17_LoadDownloadFile_SA2/src/main/resources/files/");
