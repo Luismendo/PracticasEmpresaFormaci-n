@@ -1,0 +1,9 @@
+---------3 meses--------------Formación
+
+java => sprintboot => back
+docker
+front => angular (html/css secundario)
+node ==> 1 semana
+
+------------------------------
+

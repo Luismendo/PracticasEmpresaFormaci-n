@@ -1,0 +1,15 @@
+--Dia 01 DIciembre------------
+-Introduccion/presentacion
+
+--Dia 02 Diciembre-------------
+-Recogida del material
+-Enviar codigo material
+-Instalar aplicaciones necesarias SQL
+
+--Dia 03-09 Diciembre-------------
+-Comenzando con SQL queries y ejercicios
+
+--Dia 10 Diciembre-------------
+-Prueba SQL queries
+-Asignacion a departamento de Full Stack
+-Introduccion al departamento / reunion
