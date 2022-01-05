@@ -17,7 +17,7 @@ import java.nio.file.Paths;
 public class UploadingFilesController {
     @GetMapping("/")
     public String index(){
-        return "Upload";
+        return "upload";
     }
 
     @PostMapping("/upload")
@@ -28,8 +28,9 @@ public class UploadingFilesController {
         }
         StringBuilder builder = new StringBuilder();
         builder.append(File.separator);
-        builder.append("17_LoadDownloadFile_SA2/src/main/resources/files");
+        builder.append("Users/luis.mendoza/IdeaProjects/17_LoadDownloadFile_SA2/src/main/resources/files/");
         builder.append(file.getOriginalFilename());
+
         byte[] fileBytes = file.getBytes();
         Path path = Paths.get(builder.toString());
         Files.write(path,fileBytes);

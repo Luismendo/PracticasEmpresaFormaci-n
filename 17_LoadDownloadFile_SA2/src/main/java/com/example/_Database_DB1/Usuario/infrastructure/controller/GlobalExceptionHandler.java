@@ -10,6 +10,6 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(MultipartException.class)
     public String handleMultipart(MultipartException e, RedirectAttributes attributes){
         attributes.addFlashAttribute("message",e.getCause().getMessage());
-        return "redirect:status":
+        return "redirect:status";
     }
 }
