@@ -32,7 +32,7 @@ public class GetDirectorioController {
         ficheroInputDTO.setDir(path + "/");
         System.out.println("============================= " + ficheroInputDTO.getDir());
 
-        File directory = new File("C:/"+ficheroInputDTO.getDir());
+        File directory = new File("C:/"+pathfile+ficheroInputDTO.getDir());
         FileUtils.forceMkdir(directory);
         return pathfile + ficheroInputDTO.getDir();
     }
