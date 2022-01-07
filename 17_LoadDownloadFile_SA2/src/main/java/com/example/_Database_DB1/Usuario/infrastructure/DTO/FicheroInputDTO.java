@@ -18,6 +18,8 @@ public class FicheroInputDTO {
     private String metadata;
     private Date upload_date;
 
+    private String Dir = "files/";
+
 
 
 

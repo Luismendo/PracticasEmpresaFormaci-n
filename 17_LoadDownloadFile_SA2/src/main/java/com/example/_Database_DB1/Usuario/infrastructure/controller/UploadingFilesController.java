@@ -3,6 +3,7 @@ package com.example._Database_DB1.Usuario.infrastructure.controller;
 import com.example._Database_DB1.Usuario.application.Port.AddFicheroPort;
 import com.example._Database_DB1.Usuario.infrastructure.DTO.FicheroInputDTO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -30,6 +31,9 @@ public class UploadingFilesController {
     @Autowired
     AddFicheroPort addFicheroPort;
 
+    @Value("${pathfile}")
+    String pathfile;
+
     @PostMapping("/upload")
     public String UploadFile(@RequestParam("file") MultipartFile file, RedirectAttributes attributes) throws IOException, ParseException {
         if(file==null || file.isEmpty()){
@@ -39,7 +43,8 @@ public class UploadingFilesController {
 
         StringBuilder builder = new StringBuilder();
         builder.append(File.separator);
-        builder.append("Users/luis.mendoza/IdeaProjects/17_LoadDownloadFile_SA2/src/main/resources/files/");
+        System.out.println("============================= " + pathfile+ficheroInputDTO.getDir());
+        builder.append(pathfile+ficheroInputDTO.getDir());
         builder.append(file.getOriginalFilename());
 
         byte[] fileBytes = file.getBytes();

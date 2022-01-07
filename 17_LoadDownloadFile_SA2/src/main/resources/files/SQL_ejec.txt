@@ -1,0 +1,110 @@
+select colum1, column2 from SalesLT.customer; ==> select de la tab
+
+where ModifiedDate='20030617 00:00:00.000'; ==> time structura asi
+
+where  Name like 'chain%';  ==> comienza con chain
+where  Name like '%chain%';  ==> contiene chain
+where  Name like '%chain';  ==> termina con chain
+
+TerritoryID  in ('4','6')
+
+where not Color = 'Blue';
+where Color != 'Blue';
+
+order by LastName desc ,FirstName DESC, MiddleName
+
+select TOP 1 AddressLine1, City, PostalCode from Person.Address; ==> limit 1
+
+select concat(AddressLine1, City, PostalCode) as lol from Person.Address;
+
+select ProductID,Name + ' : ' +  isnull(Color,'Sin color') as Description from Production.Product;
+
+select str(ProductID) ==> convertir a string
+
+(isNull(MaxQty,0) - isNull(MinQty,0)) as Resta
+
+SUBSTRING(AddressLine1,0,10) ==> column, inicio, fin
+
+Upper(name) ==> mayusculas
+Lower(name) ==> minusculas
+
+DATEDIFF(day, OrderDate, ShipDate) ==> num de DAYS entre fecha1, fecha2
+convert(varchar(10), '2011-02-25 21:17:33.933', 120) ==> pasar de fecha a fecha sin hora
+DateAdd(month, 6 , OrderDate) ==> añadir x meses/days/años a la fecha
+year(OrderDate), month(OrderDate), day(OrderDate)
+DATENAME(month,OrderDate) => nombre del mes
+
+SQRT(SalesOrderID) as raiz ==> raiz cuadrada
+ABS(CHECKSUM(NewId())) % 10 ==> num aleatorio para cada fila
+CAST(RAND(CHECKSUM(NEWID())) * 10 as INT) + 1
+
+distinct => solo 1 vez
+
+count(*) => contar filas
+max() ==> valor mas alto
+group by algo ==> junsta esas lineas
+where ==> filrra lineas
+having ==> es como el where pero para grupos
+
+SET IDENTITY_INSERT dbo.demoAddress ON;  ==> para meter ids
+
+==================================
+with Pers_Order as( 
+select PersonID, OrderDate, SalesOrderID, CustomerID 
+from Sales.SalesOrderHeader 
+inner join Person.BusinessEntityContact 
+on  Sales.SalesOrderHeader.BillToAddressID  = Person.BusinessEntityContact.BusinessEntityID) 
+  
+Select * from Pers_Order WHERE year(OrderDate) = 2005;
+====================================
+select * from  
+(select Sales.SalesOrderHeader.SalesOrderID, OrderDate, ProductID  
+from Sales.SalesOrderDetail 
+inner join Sales.SalesOrderHeader 
+on  Sales.SalesOrderHeader.SalesOrderID  = Sales.SalesOrderDetail.SalesOrderID) as lol; 
+==========================================
+
+
+select Row_num from
+(select (ROW_NUMBER() OVER (ORDER BY ProductID)) as Row_num 
+from dbo.demoProduct) as lol  where Row_num=1;
+========================================================
+===============================================
+============================================
+insert
+
+insert into dbo.demoProduct 
+select SalesLT.Product.ProductID, SalesLT.Product.Name, SalesLT.Product.Color, SalesLT.Product.StandardCost, SalesLT.Product.ListPrice, SalesLT.Product.Size, SalesLT.Product.Weight 
+from SalesLT.Product
+left join dbo.demoProduct
+on dbo.demoProduct.ProductID = SalesLT.Product.ProductID
+where dbo.demoProduct.ProductID is null;
+
+=========================
+update
+
+update dbo.demoAddress
+set AddressLine2 = 'N/A'
+where AddressLine2 is NULL;
+===================================
+update 2 tables
+
+update dbo.demoSalesOrderDetail
+set UnitPrice = ListPrice
+from dbo.demoProduct;
+
+===============================
+update 3
+
+update dbo.demoSalesOrderHeader
+set SubTotal = suma
+from (select SUM(LineTotal) as suma
+from dbo.demoSalesOrderDetail) as lol;
+
+=================================
+Tablas temporales
+
+CREATE TABLE #CustomerInfo  
+(CustomerID INT, FirstName  VARCHAR(25), LastName  VARCHAR(25),
+CountOfSales INT, SumOfTotalDue INT)  
+
