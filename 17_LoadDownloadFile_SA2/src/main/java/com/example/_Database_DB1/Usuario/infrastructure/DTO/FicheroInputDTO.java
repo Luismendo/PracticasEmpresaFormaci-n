@@ -2,6 +2,7 @@ package com.example._Database_DB1.Usuario.infrastructure.DTO;
 
 import com.example._Database_DB1.Usuario.domain.Fichero;
 import lombok.Data;
+import org.springframework.boot.autoconfigure.web.WebProperties;
 import org.springframework.stereotype.Component;
 
 import java.text.ParseException;
@@ -32,8 +33,6 @@ public class FicheroInputDTO {
         DateTimeFormatter dateTimeFormatter= DateTimeFormatter.ofPattern("yyyy-MM-dd");
         LocalDateTime now = LocalDateTime.now();
         String date = dateTimeFormatter.format(now);
-        System.out.println(date);
-        System.out.println("==========================");
         Date date1=new SimpleDateFormat("yyyy-MM-dd").parse(date);
 
         fichero.setUpload_date(date1);
