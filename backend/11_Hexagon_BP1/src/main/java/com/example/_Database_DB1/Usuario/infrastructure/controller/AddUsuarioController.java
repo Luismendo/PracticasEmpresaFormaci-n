@@ -13,10 +13,11 @@ public class AddUsuarioController {
     @Autowired
     AddUsuarioPort addUsuarioPort;
 
+    @CrossOrigin(origins = "*", methods = {RequestMethod.POST})
     @PostMapping
-    public UsuarioOutputDTO insert(@RequestBody UsuarioInputDTO usuarioInputDTO) throws Exception {
+    public void insert(@RequestBody UsuarioInputDTO usuarioInputDTO) throws Exception {
         Usuario usuario = usuarioInputDTO.Change(usuarioInputDTO);
         addUsuarioPort.createUsuario(usuario);
-        return new UsuarioOutputDTO(usuario);
+        //return new UsuarioOutputDTO(usuario);
     }
 }

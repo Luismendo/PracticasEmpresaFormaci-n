@@ -15,6 +15,7 @@ public class GetUsuarioController {
     @Autowired
     GetUsuarioPort getUsuarioPort;
 
+    @CrossOrigin(origins = "*", methods = {RequestMethod.GET})
     @GetMapping
     public List<UsuarioOutputDTO> getAll(){
         return new ListUsuarioOutputDTO(getUsuarioPort.getAll()).getUsuarioOutputDTOList();

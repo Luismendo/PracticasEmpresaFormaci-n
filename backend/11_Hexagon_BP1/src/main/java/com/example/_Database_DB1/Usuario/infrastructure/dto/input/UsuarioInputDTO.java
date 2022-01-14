@@ -19,7 +19,7 @@ public class UsuarioInputDTO{
     private String company_email;
     private String personal_email;
     private String city;
-    private Boolean active;
+    private String active;
     private Date created_date;
     private String imagen_url;
     private Date termination_date;
@@ -36,7 +36,13 @@ public class UsuarioInputDTO{
         usuario.setCompany_email(usuarioInputDTO.getCompany_email());
         usuario.setPersonal_email(usuarioInputDTO.getPersonal_email());
         usuario.setCity(usuarioInputDTO.getCity());
-        usuario.setActive(usuarioInputDTO.getActive());
+
+        if(usuarioInputDTO.getActive().equals("on")){
+            usuario.setActive(true);
+        }else {
+            usuario.setActive(false);
+        }
+
         usuario.setCreated_date(usuarioInputDTO.getCreated_date());
         usuario.setImagen_url(usuarioInputDTO.getImagen_url());
         usuario.setTermination_date(usuarioInputDTO.getTermination_date());
