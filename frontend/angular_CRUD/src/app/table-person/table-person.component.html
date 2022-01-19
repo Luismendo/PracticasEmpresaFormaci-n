@@ -1,0 +1,82 @@
+<p>table-person works!</p>
+
+<mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <!-- Position Column -->
+    <ng-container matColumnDef="position">
+      <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.position}} </mat-cell>
+    </ng-container>
+
+    <!-- USer Column -->
+    <ng-container matColumnDef="usuario">
+        <mat-header-cell *matHeaderCellDef> Usuario </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.usuario}} </mat-cell>
+        </ng-container>
+  
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+      </ng-container>
+
+    <!-- Apellido Column -->
+    <ng-container matColumnDef="surname">
+        <mat-header-cell *matHeaderCellDef> Apellido </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.surname}} </mat-cell>
+        </ng-container>       
+
+
+    <!-- emailC Column -->
+    <ng-container matColumnDef="emailC">
+        <mat-header-cell *matHeaderCellDef> Email Company </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.emailC}} </mat-cell>
+        </ng-container>   
+
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="emailP">
+        <mat-header-cell *matHeaderCellDef> Email Personal </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.emailP}} </mat-cell>
+        </ng-container>   
+
+  
+    <!-- Weight Column -->
+    <ng-container matColumnDef="city">
+      <mat-header-cell *matHeaderCellDef> Ciudad </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.city}} </mat-cell>
+    </ng-container>
+  
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="url">
+      <mat-header-cell *matHeaderCellDef> Url Img </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.url}} </mat-cell>
+    </ng-container>
+  
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="DateInit">
+        <mat-header-cell *matHeaderCellDef> Fecha creacion </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.DateInit}} </mat-cell>
+      </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="act">
+        <mat-header-cell *matHeaderCellDef> Activado </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.act}} </mat-cell>
+      </ng-container>
+
+
+    <!-- DateEnd Column -->
+    <ng-container matColumnDef="DateEnd">
+        <mat-header-cell *matHeaderCellDef> Fecha finalizacion </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.DateEnd}} </mat-cell>
+      </ng-container>
+
+    <!-- Button Column -->
+    <ng-container matColumnDef="DateEnd">
+        <mat-header-cell *matHeaderCellDef> Boton </mat-header-cell>
+        <mat-cell *matCellDef="let element"> <button class="add-button" (click)=""> </mat-cell>
+      </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>

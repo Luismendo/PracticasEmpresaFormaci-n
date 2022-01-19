@@ -1,0 +1,5 @@
+ng new nombre ==> nuevo trabajo angular
+ng serve -o ==> levantar y ver a tiempo real los cambios
+ng generate component nombre --flat ==> hacer un component
+ng generate module nombre --flat ==> hacer un component
+ng version ==> version
