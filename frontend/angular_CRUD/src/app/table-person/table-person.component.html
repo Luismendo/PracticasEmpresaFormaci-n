@@ -1,6 +1,6 @@
 <p>table-person works!</p>
 
-<mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
     <!-- Position Column -->
     <ng-container matColumnDef="position">
       <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
@@ -69,14 +69,23 @@
     <ng-container matColumnDef="DateEnd">
         <mat-header-cell *matHeaderCellDef> Fecha finalizacion </mat-header-cell>
         <mat-cell *matCellDef="let element"> {{element.DateEnd}} </mat-cell>
-      </ng-container>
+    </ng-container>
 
-    <!-- Button Column -->
-    <ng-container matColumnDef="DateEnd">
-        <mat-header-cell *matHeaderCellDef> Boton </mat-header-cell>
-        <mat-cell *matCellDef="let element"> <button class="add-button" (click)=""> </mat-cell>
-      </ng-container>
+    <ng-container matColumnDef="Button">
+      <mat-header-cell *matHeaderCellDef> button </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <!--Modal Content-->
+        <button mat-button (click)="openDialog(element.position)">View</button>       
+        
+        
+        <button class="add-button"  (click)="routerLink(element.position)">Edit</button>
+        <button class="add-button" style="background-color:red;" (click)="Delete(element.position)">X</button>
+      </mat-cell>
+    </ng-container>
+
+    
+
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-</mat-table>
+</table>

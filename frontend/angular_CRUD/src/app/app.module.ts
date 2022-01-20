@@ -5,14 +5,24 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TablePersonComponent } from './table-person/table-person.component';
-import { FormsModule } from '@angular/forms';
+
 import {MatTableModule} from '@angular/material/table';
-import { ReactiveFormsModule } from '@angular/forms';
+import {MatDialogModule} from '@angular/material/dialog';
+
+import { ModalComponent } from './modal/modal.component';
+import { EditFormsComponent } from './edit-forms/edit-forms.component';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TablePersonComponent
+    TablePersonComponent,
+    ModalComponent,
+    EditFormsComponent
+  ]
+  ,entryComponents: [
+    ModalComponent
   ],
   imports: [
     BrowserModule,
@@ -20,9 +30,14 @@ import { ReactiveFormsModule } from '@angular/forms';
     BrowserAnimationsModule,
     BrowserAnimationsModule,
     BrowserModule,
-    FormsModule,
+
     MatTableModule,
+
+    MatDialogModule,
+    HttpClientModule,
     ReactiveFormsModule,
+    FormsModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]

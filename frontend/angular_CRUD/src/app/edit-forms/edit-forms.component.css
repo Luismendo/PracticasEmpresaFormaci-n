@@ -1,0 +1,46 @@
+.design{
+    background-color: #7fffd4;
+    text-align: center; 
+    margin-left: 27%;
+    margin-right: 27%;
+}
+
+.Form{
+    background-color: #7fffd4;
+    padding-left: 25%;
+    padding-right: 25%;
+    display: flex;  
+    flex-flow: row wrap;
+    font-weight: bold;
+    text-align: left; 
+    justify-content: center;
+}
+
+.line-form{
+  display: flex;  
+  flex-flow: row wrap;
+  font-weight: bold;
+  text-align: left; 
+  width: 100%;
+  justify-content: center;
+  margin: 10px;
+  
+}
+.line-form > * {
+  margin-right: 10px;
+  flex: 1 1;
+ }
+
+.line-button{
+  display: flex;  
+  flex-flow: row wrap;
+  font-weight: bold;
+  text-align: center; 
+  justify-content: center;
+  margin: 10px;
+  
+}
+
+.line-button > *{
+  margin:10px;
+}
