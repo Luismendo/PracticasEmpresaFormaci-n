@@ -3,3 +3,5 @@ ng serve -o ==> levantar y ver a tiempo real los cambios
 ng generate component nombre --flat ==> hacer un component
 ng generate module nombre --flat ==> hacer un component
 ng version ==> version
+ng add @angular/material
+npm install --save angular-in-memory-web-api
