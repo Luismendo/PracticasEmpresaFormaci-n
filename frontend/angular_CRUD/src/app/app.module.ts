@@ -14,6 +14,9 @@ import { EditFormsComponent } from './edit-forms/edit-forms.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,8 +34,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     BrowserAnimationsModule,
     BrowserModule,
 
-    MatTableModule,
+    MatInputModule,
+    MatFormFieldModule,
 
+    MatTableModule,
     MatDialogModule,
     HttpClientModule,
     ReactiveFormsModule,

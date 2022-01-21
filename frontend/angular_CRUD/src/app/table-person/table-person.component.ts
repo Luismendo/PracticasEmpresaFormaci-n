@@ -5,8 +5,7 @@ import {MatDialog} from '@angular/material/dialog';
 import { ModalComponent } from '../modal/modal.component';
 import { Router } from '@angular/router';
 import { FormsService } from '../forms.service';
-import { zip } from 'rxjs';
-
+import {MatTableDataSource} from '@angular/material/table';
 
 export interface PeriodicElement {
   name: string;
@@ -78,6 +77,12 @@ export class TablePersonComponent implements OnInit {
   @ViewChild(MatTable)
   table!: MatTable<PeriodicElement>;
 
+
+  dataSourceSearch = new MatTableDataSource(ELEMENT_DATA);
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSourceSearch.filter = filterValue.trim().toLowerCase();
+  }
   constructor(public dialog: MatDialog, private router: Router,private formsService: FormsService){    }
   
   openDialog(id: number) {
@@ -104,18 +109,35 @@ export class TablePersonComponent implements OnInit {
     let temp = this.formsService.getInfo();
     if(temp != null){
       let findID: any = this.dataSource.findIndex(x => x.position == temp.position);
-      console.log(temp)
-      console.log(temp.position)
-      console.log(findID)
-      this.dataSource[findID].name = temp.name;
-      this.dataSource[findID].usuario = temp.usuario;
-      this.dataSource[findID].emailC = temp.emailC;
-      this.dataSource[findID].emailP = temp.emailP;
-      this.dataSource[findID].city = temp.city;
-      this.dataSource[findID].url = temp.namurle;
-      this.dataSource[findID].DateInit = temp.DateInit;
-      this.dataSource[findID].DateEnd = temp.DateEnd;
-      this.dataSource[findID].act = temp.act;
+      if(findID >= 0 && findID != null){
+        console.log(temp)
+        console.log(temp.position)
+        console.log("aaaaaaaaaaaaa "+findID)
+        this.dataSource[findID].name = temp.name;
+        this.dataSource[findID].usuario = temp.surname;
+        this.dataSource[findID].emailC = temp.emailC;
+        this.dataSource[findID].emailP = temp.emailP;
+        this.dataSource[findID].city = temp.city;
+        this.dataSource[findID].url = temp.namurle;
+        this.dataSource[findID].DateInit = temp.DateInit;
+        this.dataSource[findID].DateEnd = temp.DateEnd;
+        this.dataSource[findID].act = temp.act;
+      }else{
+        let addData: PeriodicElement = {
+          position: temp.position, 
+          name: temp.name, 
+          usuario: temp.surname,
+          emailC: temp.emailC,
+          emailP: temp.emailP ,
+          city: temp.city,
+          url: temp.url,
+          DateInit: temp.DateInit,
+          act: temp.act,
+          DateEnd: temp.DateEnd
+        };
+        this.dataSource.push(addData);
+      }
+
 
       console.log("AAAAAAAAAA")
 
@@ -132,13 +154,32 @@ export class TablePersonComponent implements OnInit {
   }
 
   routerLink(id: number): void {
-    
-    let find: any = this.dataSource.find(x => x.position == id);
-    let index: any = this.dataSource.findIndex(x => x.position == id);
-    console.log(find);
-    this.formsService.sendInfo(find);
-    let url: string = 'formEdit/'+index
-    this.router.navigateByUrl(url);
+    if(id >= 0){
+      let find: any = this.dataSource.find(x => x.position == id);
+      let index: any = this.dataSource.findIndex(x => x.position == id);
+      console.log(find);
+      this.formsService.sendInfo(find);
+      let url: string = 'formEdit/'+index
+      this.router.navigateByUrl(url);
+    }else{
+      let find: PeriodicElement ={
+        position: this.dataSource[this.dataSource.length-1].position +1, 
+        name: '', 
+        usuario: '',
+        emailC: '',
+        emailP: '',
+        city: '',
+        url: '',
+        DateInit: '',
+        act: false,
+        DateEnd: ''
+      }
+      console.log(find.position);
+      this.formsService.sendInfo(find);
+      let url: string = 'formEdit/'+find.position;
+      this.router.navigateByUrl(url);
+    }
+
   }
 
 }
