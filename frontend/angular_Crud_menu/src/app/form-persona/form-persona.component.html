@@ -1,1 +1,73 @@
-<p>form-persona works!</p>
+<div class="design">
+    <h1>Introducir los campos de las personas</h1>
+    <form class="Form" [formGroup]="miform" (ngSubmit)="onSubmit()">
+  
+  
+      {{miform.value | json}}
+  
+      <div class='line-form'>
+        <label for="Nombre">Nombre</label> 
+        <input type="text" name="Nombre" id="Nombre" formControlName="name">
+      </div>
+      
+      <div class='line-form'>
+        <label for="Apellido">Apellido</label> 
+        <input type="text" name="Apellido" id="Apellido" formControlName="usuario">
+      </div>
+      
+      <div class='line-form'>
+        <label for="Contraseña">Contraseña</label> 
+        <input type="password" name="Contraseña"   id="Contraseña">
+      </div>    
+      
+      <div class='line-form'>
+        <label for="EmailCP">Email de la compañía</label> 
+        <input type="email" name="EmailCP" id="EmailCP" formControlName="emailC">
+      </div>
+      
+      <div class='line-form'>
+        <label for="EmailP">Email personal</label> 
+        <input type="email" name="EmailP" id="EmailP" formControlName="emailP">
+      </div>    
+      
+      <div class='line-form'>
+        <label for="Ciudad">Ciudad</label> 
+        <input type="text" name="Ciudad" id="Ciudad" formControlName="city">
+      </div>    
+      
+      
+      <div class='line-form'>
+        <label for="url">url de la imagen</label> 
+        <input type="url" name="url" id="url" formControlName="url">
+      </div>    
+      
+      
+      <div class='line-form'>
+        <label for="FechaInit">Fecha creación</label> 
+        <input type="date" name="FechaInit" id="FechaInit"  formControlName="DateInit">
+      </div>    
+      
+      <div class='line-form'>
+        <label for="Activado">Activado</label> 
+        <input type="checkbox" name="Activado" id="Activado" formControlName="act">
+      </div>    
+      
+      <div class='line-form'>
+        <label for="FechaFin">Fecha finalización</label> 
+        <input type="date" name="FechaFin" id="FechaFin" formControlName="DateEnd">
+      </div>  
+  
+      <div class='line-button'>
+        <div class='sendForm'>
+          <input type="submit" name="submitButton" id="submitButton" value='Editar'><br>
+        </div>
+        <div class='resetForm'>
+          <input type="reset" name="resetButton" id="resetButton" value='Limpiar'>
+        </div>
+      </div>
+  
+  
+      
+      
+    </form>
+  </div>

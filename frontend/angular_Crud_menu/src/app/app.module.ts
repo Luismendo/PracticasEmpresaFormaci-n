@@ -17,6 +17,7 @@ import {MaterialExampleModule} from './material/material.module';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import { IntroComponent } from './intro/intro.component';
+import { SidenavComponent } from './sidenav/sidenav.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { IntroComponent } from './intro/intro.component';
     DetailPersonaComponent,
     FormPersonaComponent,
     IntroComponent,
+    SidenavComponent,
   ],
   imports: [
     BrowserModule,
