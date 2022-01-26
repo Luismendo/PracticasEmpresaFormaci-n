@@ -37,22 +37,28 @@ export class DetailPersonaComponent implements OnInit {
 
   openDialog(id: number) {
     let find: any = this.arrPeronas.find(x => x.position == id);
-    if(this.arrPeronas.find(x => x.position==id) != null){
+    if(this.verDetalle){
+      if(this.arrPeronas.find(x => x.position==id) != null){
 
-
-
-      this.dialog.open(ModalComponent, {
-        data: { position: find.position, 
-          name: find.name, 
-          surname: find.usuario,
-          emailC: find.emailC,
-          emailP: find.emailP ,
-          city: find.city,
-          url: find.url,
-          DateInit: find.DateInit,
-          act: find.act,
-          DateEnd: find.DateEnd
-        }});
+        this.dialog.open(ModalComponent, {
+          data: { position: find.position, 
+            name: find.name, 
+            surname: find.usuario,
+            emailC: find.emailC,
+            emailP: find.emailP ,
+            city: find.city,
+            url: find.url,
+            DateInit: find.DateInit,
+            act: find.act,
+            DateEnd: find.DateEnd
+          }});
+      }
+    }else{
+      let errorMessage = document.getElementById('errorDetalle') as HTMLInputElement;
+      errorMessage.innerHTML="Pulse el check para ver detalle";
+      setTimeout(function(){
+        errorMessage.innerHTML="";
+        },5000);
     }
   }
 
