@@ -6,25 +6,34 @@ import { FormPersonaComponent } from './form-persona/form-persona.component';
 import { IntroComponent } from './intro/intro.component';
 import { LateralMenuComponent } from './lateral-menu/lateral-menu.component';
 import { ModalComponent } from './modal/modal.component';
+import { PersonResolver } from './resolver/person.resolver';
 import { TablePersonaComponent } from './table-persona/table-persona.component';
 
 const routes: Routes = [
-  {path: '',
-  component:IntroComponent
+  {
+    path: '',
+    component:IntroComponent
   },
-  {path: 'detail',
-  component: DetailPersonaComponent
+  {
+    path: 'detail',
+    component: DetailPersonaComponent,
+    resolve: {
+      person: PersonResolver
+    }
   },
-  {path: 'table',
-  component:TablePersonaComponent
+  {
+    path: 'table',
+    component:TablePersonaComponent
   },
-  {path: 'form',
-  component:FormPersonaComponent
+  {
+    path: 'form',
+    component:FormPersonaComponent
   },
-  {path: 'modal',
-  component:ModalComponent,
-  canActivate:[CheckViewGuard],
-  data:{}
+  {
+    path: 'modal',
+    component:ModalComponent,
+    canActivate:[CheckViewGuard],
+    data:{}
   },
 ];
 

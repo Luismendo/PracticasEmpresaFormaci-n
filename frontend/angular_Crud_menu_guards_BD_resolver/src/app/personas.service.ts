@@ -56,6 +56,10 @@ export class PersonasService {
     return this.personas$.asObservable();
   }
 
+  getPerson$(): Observable<any>{
+    return this.personas$;
+  }
+
   getPersonas(): Persona[]{
     return this.personas;
   }

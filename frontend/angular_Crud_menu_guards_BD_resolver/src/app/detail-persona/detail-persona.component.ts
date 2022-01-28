@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ModalComponent } from '../modal/modal.component';
 import { Persona } from '../persona';
 import { PersonasService } from '../personas.service';
@@ -17,12 +17,14 @@ export class DetailPersonaComponent implements OnInit {
   
   constructor(private personaService: PersonasService,
     private router: Router,
-    public dialog: MatDialog) { }
+    public dialog: MatDialog,
+    private _resolver_person: ActivatedRoute) { }
 
   ngOnInit(): void {
       this.personaService.getPersonas$().subscribe(peronas => {
         this.arrPeronas = peronas;
     });
+    console.log(this._resolver_person.snapshot.data)
   }
 
   
