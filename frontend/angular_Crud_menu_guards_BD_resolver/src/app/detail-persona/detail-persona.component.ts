@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Data, Router } from '@angular/router';
 import { ModalComponent } from '../modal/modal.component';
 import { Persona } from '../persona';
 import { PersonasService } from '../personas.service';
+
 
 @Component({
   selector: 'app-detail-persona',
@@ -11,7 +12,8 @@ import { PersonasService } from '../personas.service';
   styleUrls: ['./detail-persona.component.css']
 })
 export class DetailPersonaComponent implements OnInit {
-  arrPeronas: Persona[] = this.personaService.getPersonas();
+  //arrPeronas: Persona[] = this.personaService.getPersonas();
+  arrPeronas: Persona[]= this._resolver_person.snapshot.data['person'];
   verDetalle = false;
   
   
@@ -21,10 +23,11 @@ export class DetailPersonaComponent implements OnInit {
     private _resolver_person: ActivatedRoute) { }
 
   ngOnInit(): void {
+    /*
       this.personaService.getPersonas$().subscribe(peronas => {
         this.arrPeronas = peronas;
-    });
-    console.log(this._resolver_person.snapshot.data)
+    });*/
+    console.log(this._resolver_person.snapshot.data['person'])
   }
 
   

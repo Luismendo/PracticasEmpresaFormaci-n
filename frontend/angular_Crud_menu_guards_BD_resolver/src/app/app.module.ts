@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { ErrorHandler, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -19,6 +19,12 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import { IntroComponent } from './intro/intro.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { ModalComponent } from './modal/modal.component';
+import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { User } from './persona';
+import { PersonasService } from './personas.service';
+import { UserData } from './bbdd.service';
+import { ErrorComponent } from './error/error.component';
+import { GlobalErrorHandlerService } from './global-error-handler.service';
 
 @NgModule({
   declarations: [
@@ -30,6 +36,7 @@ import { ModalComponent } from './modal/modal.component';
     IntroComponent,
     SidenavComponent,
     ModalComponent,
+    ErrorComponent,
   ],entryComponents:[
     ModalComponent
   ],
@@ -41,10 +48,13 @@ import { ModalComponent } from './modal/modal.component';
     ReactiveFormsModule,
     MatNativeDateModule,
     HttpClientModule,
-    MaterialExampleModule
+    MaterialExampleModule,
+    InMemoryWebApiModule.forRoot(UserData)
 
   ],
-  providers: [],
+  providers: [
+    {provide: ErrorHandler, useClass: GlobalErrorHandlerService}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

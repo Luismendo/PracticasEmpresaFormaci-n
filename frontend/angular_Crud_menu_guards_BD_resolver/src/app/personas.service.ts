@@ -1,25 +1,35 @@
 import { Injectable } from '@angular/core';
 import { Personas } from './mock-persona';
-import { Persona } from './persona'
 
-import { Observable, of, Subject} from 'rxjs';
+
+import { Persona } from './persona'
+import { catchError, Observable, of, Subject, tap, throwError} from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import {User} from './persona';
+
 
 @Injectable({
   providedIn: 'root'
 })
-export class PersonasService {
+export class PersonasService{
 
   private personas: Persona[] = Personas;
   private personas$: Subject<Persona[]>;
   private pre_perso: Persona | undefined;
 
   private checkObserv: Subject<boolean>;
-
-  constructor() {
+/**
+  apiurl = 'api/users';
+  headers = new HttpHeaders().set('Content-Type', 'application/json').set('Accept', 'application/json');
+  httpOptions = {
+    headers: this.headers
+  };
+ */
+  constructor(private http: HttpClient) {
     console.log("A" + this.personas)
     this.personas = Personas;
     this.personas$ = new Subject();
+
     this.checkObserv = new Subject();
 
   }
@@ -52,12 +62,14 @@ export class PersonasService {
     return this.pre_perso;
   }
 
+  //AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
   getPersonas$(): Observable<Persona[]>{
     return this.personas$.asObservable();
-  }
+    /**    return this.http.get<User[]>(this.apiurl).pipe(
+      tap(data => console.log(data)),
+      catchError(this.handleError)
+    ); */
 
-  getPerson$(): Observable<any>{
-    return this.personas$;
   }
 
   getPersonas(): Persona[]{
@@ -76,5 +88,9 @@ export class PersonasService {
     return this.check;
   }
 
+  private handleError(error: any) {
+    console.error(error);
+    return throwError(error);
+  }
   
 }

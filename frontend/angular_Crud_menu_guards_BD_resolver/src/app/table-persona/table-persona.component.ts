@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTable } from '@angular/material/table';
 import { Router } from '@angular/router';
+import { Personas } from '../mock-persona';
 import { Persona } from '../persona';
 import { PersonasService } from '../personas.service';
 
@@ -11,7 +12,7 @@ import { PersonasService } from '../personas.service';
 })
 export class TablePersonaComponent implements OnInit {
 
-  arrPeronas: Persona[] = this.personaService.getPersonas();
+  arrPeronas: Persona[] = Personas;
 
   displayedColumns: string[] = ['position', 'name', 'usuario', 'emailC', 'emailP', 'city', 'url', 'DateInit', 'act', 'DateEnd','Button'];
   dataSource = this.arrPeronas;
@@ -27,17 +28,33 @@ export class TablePersonaComponent implements OnInit {
   ngOnInit(): void {
     this.personaService.getPersonas$().subscribe(peronas => {
         this.arrPeronas = peronas;
+        console.log(peronas)
+        console.log(this.arrPeronas)
+        this.dataSource = this.arrPeronas;
     });
-    console.log(this.arrPeronas);
+    
   }
 
   Delete(id: number): void {
     this.personaService.deletePersona(id);
+    /** 
+    this.personaService.deletePersona(id).subscribe(data => {
+      this.getUsers();
+    });*/
     this.table.renderRows();
   }
 
   Add(): void {
     this.router.navigateByUrl('form');
   }
+/*
+  getUsers(): void {
+    this.personaService.getPersonas$().subscribe(peronas => {
+      this.arrPeronas = peronas;
+      console.log(peronas)
+      console.log(this.arrPeronas)
+      this.dataSource = this.arrPeronas;
+  });
+  }*/
 
 }
