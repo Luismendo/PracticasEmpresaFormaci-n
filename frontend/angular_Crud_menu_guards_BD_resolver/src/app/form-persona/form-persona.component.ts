@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { PersonasService } from '../personas.service';
+import { PersonasService } from '../personas-all-structures/personas.service';
 import { Router } from '@angular/router';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 

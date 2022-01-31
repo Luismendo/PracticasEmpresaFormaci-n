@@ -1,9 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTable } from '@angular/material/table';
 import { Router } from '@angular/router';
-import { Personas } from '../mock-persona';
-import { Persona } from '../persona';
-import { PersonasService } from '../personas.service';
+import { Personas } from '../personas-all-structures/mock-persona';
+import { Persona } from '../personas-all-structures/persona';
+import { PersonasService } from '../personas-all-structures/personas.service';
 
 @Component({
   selector: 'app-table-persona',
@@ -28,8 +28,6 @@ export class TablePersonaComponent implements OnInit {
   ngOnInit(): void {
     this.personaService.getPersonas$().subscribe(peronas => {
         this.arrPeronas = peronas;
-        console.log(peronas)
-        console.log(this.arrPeronas)
         this.dataSource = this.arrPeronas;
     });
     

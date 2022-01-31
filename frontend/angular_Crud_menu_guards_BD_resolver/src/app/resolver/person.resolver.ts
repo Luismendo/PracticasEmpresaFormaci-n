@@ -1,8 +1,8 @@
 import { ActivatedRouteSnapshot, Resolve } from '@angular/router';
 import { Injectable } from '@angular/core';
-import { Persona } from '../persona';
+import { Persona } from '../personas-all-structures/persona';
 import { Observable, of } from 'rxjs';
-import { PersonasService } from '../personas.service';
+import { PersonasService } from '../personas-all-structures/personas.service';
 
 @Injectable({
     providedIn: 'root'
