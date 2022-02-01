@@ -19,7 +19,7 @@ public class AddUsuarioUseCase implements AddUsuarioPort {
     public boolean validValues(Usuario usuario) throws Exception {
         if (usuario.getUsuario()==null) {throw new Exception("Usuario no puede ser nulo"); }
         if (usuario.getUsuario().length()>10) { throw new Exception("Longitud de usuario no puede ser superior a 10 caracteres");}
-        if (usuario.getPassword()==null) {throw new Exception("getPassword no puede ser nulo"); }
+        //if (usuario.getPassword()==null) {throw new Exception("getPassword no puede ser nulo"); }
         if (usuario.getName()==null) {throw new Exception("getName no puede ser nulo"); }
         if (usuario.getCompany_email()==null) {throw new Exception("getCompany_email no puede ser nulo"); }
         if (usuario.getCity()==null) {throw new Exception("getCity no puede ser nulo"); }

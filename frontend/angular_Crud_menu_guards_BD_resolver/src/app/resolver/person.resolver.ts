@@ -1,33 +1,23 @@
 import { ActivatedRouteSnapshot, Resolve } from '@angular/router';
 import { Injectable } from '@angular/core';
-import { Persona } from '../personas-all-structures/persona';
+import { Persona, PersonaHttp } from '../personas/persona';
 import { Observable, of } from 'rxjs';
-import { PersonasService } from '../personas-all-structures/personas.service';
+import { PersonasService } from '../personas/personas.service';
 
 @Injectable({
     providedIn: 'root'
 })
 
-export class PersonResolver implements Resolve<Persona[]>{
-    arrPeronas: Persona[] = this._api_person.getPersonas();
-    constructor(private _api_person: PersonasService){
+export class PersonResolver implements Resolve<Observable<any>>{
 
+    constructor(private _api_person: PersonasService){}
+
+    resolve(route: ActivatedRouteSnapshot){
+
+        return this._api_person.getHttp();
+        //await this.ddelay(1000);     
     }
-
-    async resolve(route: ActivatedRouteSnapshot){
-
-        this._api_person.getPersonas$().subscribe(peronas => {
-
-            this.arrPeronas = peronas;
-        });
-
-
-        //await this.ddelay(1000);
-        
-        return this.arrPeronas;
-
-        
-    }
+    
     ddelay(ms: number) {
         return new Promise( resolve => setTimeout(resolve, ms) );
     }

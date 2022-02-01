@@ -1,9 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTable } from '@angular/material/table';
 import { Router } from '@angular/router';
-import { Personas } from '../personas-all-structures/mock-persona';
-import { Persona } from '../personas-all-structures/persona';
-import { PersonasService } from '../personas-all-structures/personas.service';
+import { Personas } from '../personas/mock-persona';
+import { Persona, PersonaHttp } from '../personas/persona';
+import { PersonasService } from '../personas/personas.service';
 
 @Component({
   selector: 'app-table-persona',
@@ -12,7 +12,8 @@ import { PersonasService } from '../personas-all-structures/personas.service';
 })
 export class TablePersonaComponent implements OnInit {
 
-  arrPeronas: Persona[] = Personas;
+  arrPeronas: PersonaHttp[] = [];
+  
 
   displayedColumns: string[] = ['position', 'name', 'usuario', 'emailC', 'emailP', 'city', 'url', 'DateInit', 'act', 'DateEnd','Button'];
   dataSource = this.arrPeronas;
@@ -26,33 +27,34 @@ export class TablePersonaComponent implements OnInit {
   constructor(private personaService: PersonasService, private router: Router) { }
 
   ngOnInit(): void {
-    this.personaService.getPersonas$().subscribe(peronas => {
-        this.arrPeronas = peronas;
-        this.dataSource = this.arrPeronas;
+
+    this.personaService.getHttp().subscribe((http: any) =>{
+      console.log(http)
+      this.arrPeronas = http;
+      this.dataSource = this.arrPeronas;
     });
     
   }
 
   Delete(id: number): void {
-    this.personaService.deletePersona(id);
-    /** 
-    this.personaService.deletePersona(id).subscribe(data => {
+    this.personaService.deletePersona(id).subscribe((http: any) =>{
+      console.log(http)
       this.getUsers();
-    });*/
-    this.table.renderRows();
+      this.table.renderRows();
+    });
   }
 
   Add(): void {
     this.router.navigateByUrl('form');
   }
-/*
+
   getUsers(): void {
-    this.personaService.getPersonas$().subscribe(peronas => {
-      this.arrPeronas = peronas;
-      console.log(peronas)
-      console.log(this.arrPeronas)
+    this.personaService.getHttp().subscribe((http: any) =>{
+      console.log(http)
+      this.arrPeronas = http;
       this.dataSource = this.arrPeronas;
-  });
-  }*/
+    });
+  }
+  
 
 }

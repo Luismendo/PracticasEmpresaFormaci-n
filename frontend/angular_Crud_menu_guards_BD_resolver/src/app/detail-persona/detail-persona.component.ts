@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Data, Router } from '@angular/router';
 import { ModalComponent } from '../modal/modal.component';
-import { Persona } from '../personas-all-structures/persona';
-import { PersonasService } from '../personas-all-structures/personas.service';
+import { Persona, PersonaHttp } from '../personas/persona';
+import { PersonasService } from '../personas/personas.service';
 
 
 @Component({
@@ -13,30 +13,43 @@ import { PersonasService } from '../personas-all-structures/personas.service';
 })
 export class DetailPersonaComponent implements OnInit {
   //arrPeronas: Persona[] = this.personaService.getPersonas();
-  arrPeronas: Persona[]= this._resolver_person.snapshot.data['person'];
+  
+  arrPeronas: PersonaHttp[]= [];
   verDetalle = false;
+  null = "????";
   
   
   constructor(private personaService: PersonasService,
     private router: Router,
     public dialog: MatDialog,
-    private _resolver_person: ActivatedRoute) { }
+    private _resolver_person: ActivatedRoute) {}
 
   ngOnInit(): void {
-    /*
-      this.personaService.getPersonas$().subscribe(peronas => {
-        this.arrPeronas = peronas;
-    });*/
-    console.log(this._resolver_person.snapshot.data['person'])
+    console.log(this._resolver_person.snapshot.data)
+    this.arrPeronas = this._resolver_person.snapshot.data['person'];
+    console.log(this.arrPeronas[1].termination_date)
+    
   }
 
   
   Delete(id: number): void {
-    this.personaService.deletePersona(id);
+    this.personaService.deletePersona(id).subscribe((http: any) =>{
+      console.log(http)
+      this.getUsers();
+    });
   }
 
+  getUsers(): void {
+    this.personaService.getHttp().subscribe((http: any) =>{
+      console.log(http)
+      this.arrPeronas = http;
+    });
+  }
+
+
   Editar(id: number): void {
-    this.personaService.PreEditPersona(this.arrPeronas[id]);
+    var tempPers = this.arrPeronas.findIndex(x => x.position == id);
+    this.personaService.PreEditPersona(this.arrPeronas[tempPers]);
     this.router.navigateByUrl('form');
   }
 

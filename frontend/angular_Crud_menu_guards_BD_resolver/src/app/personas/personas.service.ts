@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Personas } from './mock-persona';
 
 
-import { Persona } from './persona'
+import { Persona, PersonaHttp } from './persona'
 import { catchError, Observable, of, Subject, tap, throwError} from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {User} from './persona';
@@ -15,16 +15,10 @@ export class PersonasService{
 
   private personas: Persona[] = Personas;
   private personas$: Subject<Persona[]>;
-  private pre_perso: Persona | undefined;
+  private pre_perso: PersonaHttp | undefined;
 
   private checkObserv: Subject<boolean>;
-/**
-  apiurl = 'api/users';
-  headers = new HttpHeaders().set('Content-Type', 'application/json').set('Accept', 'application/json');
-  httpOptions = {
-    headers: this.headers
-  };
- */
+
   constructor(private http: HttpClient) {
     console.log("A" + this.personas)
     this.personas = Personas;
@@ -34,27 +28,36 @@ export class PersonasService{
 
   }
 
-  addPersona(newPersona: Persona){
-    newPersona.position = this.personas[this.personas.length-1].position+1;
-    this.personas.push(newPersona);
-    this.personas$.next(this.personas);
+  addPersona(newPersona: PersonaHttp){
+    const path = 'http://localhost:8080/';
+    //newPersona.position = this.personas[this.personas.length-1].position+1;
+    console.log(newPersona);
+    return this.http.post(path, newPersona);
+
+    
+    //this.personas.push(newPersona);
+    //this.personas$.next(this.personas);
   }
 
   deletePersona(id: number){
-    console.log("Mandas:"+id);
-    id = this.personas.findIndex(x => x.position == id);
-    console.log("Cambias:"+id);
-    this.personas.splice(id,1);
-    this.personas$.next(this.personas);
+    console.log(id)
+    const path = 'http://localhost:8080/id/'+id;
+    return this.http.delete(path);
+
   }
 
-  editPersona(newPersona: Persona){
+  editPersona(newPersona: PersonaHttp){
+    const path = 'http://localhost:8080/';
+    this.http.put(path,newPersona);
+    /** 
     this.personas[newPersona.position] = newPersona;
     this.personas$.next(this.personas);
-    this.pre_perso = undefined;
+    this.pre_perso = undefined;*/
+
+
   }
 
-  PreEditPersona(newPersona: Persona){
+  PreEditPersona(newPersona: PersonaHttp){
     this.pre_perso = newPersona;
   }
 
@@ -65,12 +68,14 @@ export class PersonasService{
   //AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
   getPersonas$(): Observable<Persona[]>{
     return this.personas$.asObservable();
-    /**    return this.http.get<User[]>(this.apiurl).pipe(
-      tap(data => console.log(data)),
-      catchError(this.handleError)
-    ); */
-
   }
+
+  getHttp(): Observable<PersonaHttp[]>{
+    const path = 'http://localhost:8080/';
+    return this.http.get<PersonaHttp[]>(path);
+  }
+
+  
 
   getPersonas(): Persona[]{
     return this.personas;

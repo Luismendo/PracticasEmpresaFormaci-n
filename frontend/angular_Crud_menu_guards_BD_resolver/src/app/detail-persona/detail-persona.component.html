@@ -18,23 +18,24 @@
                     <mat-card-header>
                     <div mat-card-avatar class="example-header-image"></div>
                     <mat-card-title>{{persona.usuario}}</mat-card-title>
-                    <mat-card-subtitle>{{persona.name}}</mat-card-subtitle>
+                    <mat-card-subtitle>{{persona.name}} - {{persona.position}}</mat-card-subtitle>
                     </mat-card-header>
                     <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
                     <mat-card-content>
                     <p>
-                        {{persona.emailC}}
+                        {{persona.company_email}}
                     </p>
                     <p>
-                        {{persona.emailP}}
+                        {{persona.personal_email}}
                     </p>
                     <p>
                         {{persona.city}}
                     </p>
                     <p>
-                        {{persona.DateInit}} --- {{persona.DateEnd}}
+                        {{persona.created_date.slice(0,10)}} ---  
+                        {{persona.termination_date ? persona.termination_date.slice(0,10) :  null}}
                     </p>
-                    <p>{{persona.act}}</p>
+                    <p>{{persona.active}}</p>
                     </mat-card-content>
                     <mat-card-actions>
                     

@@ -10,6 +10,7 @@ import java.util.Date;
 @Data
 @Component
 public class UsuarioOutputDTO{
+    private int position;
     private String usuario;
     private String password;
     private String name;
@@ -26,6 +27,7 @@ public class UsuarioOutputDTO{
     }
 
     public UsuarioOutputDTO(Usuario usuario) {
+        this.setPosition(usuario.getId());
         this.setUsuario(usuario.getUsuario());
         this.setPassword(usuario.getPassword());
         this.setName(usuario.getName());
@@ -37,6 +39,7 @@ public class UsuarioOutputDTO{
         this.setCreated_date(usuario.getCreated_date());
         this.setImagen_url(usuario.getImagen_url());
         this.setTermination_date(usuario.getTermination_date());
+        System.out.println(termination_date);
 
     }
 

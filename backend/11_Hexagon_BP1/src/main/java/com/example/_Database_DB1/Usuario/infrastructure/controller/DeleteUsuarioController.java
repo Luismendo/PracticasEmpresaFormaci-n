@@ -14,6 +14,7 @@ public class DeleteUsuarioController {
     @Autowired
     DeleteUsuarioPort deleteUsuarioPort;
 
+    @CrossOrigin(origins = "*", methods = {RequestMethod.DELETE})
     @DeleteMapping("/id/{id}")
     public void deleteById(@PathVariable int id) throws Exception {
 

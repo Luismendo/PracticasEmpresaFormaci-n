@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
-import { PersonasService } from './personas-all-structures/personas.service';
+import { PersonasService } from './personas/personas.service';
 
 @Injectable({
   providedIn: 'root'
