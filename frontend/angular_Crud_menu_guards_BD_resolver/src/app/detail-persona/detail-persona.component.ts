@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Data, Router } from '@angular/router';
 import { ModalComponent } from '../modal/modal.component';
-import { Persona, PersonaHttp } from '../personas/persona';
+import { PersonaHttp } from '../personas/persona';
 import { PersonasService } from '../personas/personas.service';
 
 

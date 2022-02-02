@@ -70,8 +70,11 @@ export class FormPersonaComponent implements OnInit {
       });
       this.router.navigateByUrl('detail');
     }else{
-      console.log(this.miform.value);
-      this.personaService.editPersona(this.miform.value);
+      console.log("edit");
+      this.personaService.editPersona(this.miform.value).subscribe((http: any) =>{
+        console.log(http)
+        
+      });
       this.router.navigateByUrl('detail');
     }
 

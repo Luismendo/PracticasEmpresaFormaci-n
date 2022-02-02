@@ -12,6 +12,7 @@ import java.util.Date;
 @Component
 public class UsuarioInputDTO{
 
+    private int id;
     private String usuario;
     private String password;
     private String name;

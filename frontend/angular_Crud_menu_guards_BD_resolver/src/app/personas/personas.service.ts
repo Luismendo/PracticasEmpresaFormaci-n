@@ -1,11 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Personas } from './mock-persona';
 
-
-import { Persona, PersonaHttp } from './persona'
+import { PersonaHttp, tempSend } from './persona'
 import { catchError, Observable, of, Subject, tap, throwError} from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import {User} from './persona';
 
 
 @Injectable({
@@ -13,30 +10,25 @@ import {User} from './persona';
 })
 export class PersonasService{
 
-  private personas: Persona[] = Personas;
-  private personas$: Subject<Persona[]>;
   private pre_perso: PersonaHttp | undefined;
-
+  private tempSend: tempSend  = {id:0,name:"",usuario:"",surname:"",company_email:"",personal_email:"",
+                city:"",
+                active:false,
+                created_date:"",
+                imagen_url:"",
+                termination_date:"",password:""};
   private checkObserv: Subject<boolean>;
 
   constructor(private http: HttpClient) {
-    console.log("A" + this.personas)
-    this.personas = Personas;
-    this.personas$ = new Subject();
-
     this.checkObserv = new Subject();
 
   }
 
   addPersona(newPersona: PersonaHttp){
     const path = 'http://localhost:8080/';
-    //newPersona.position = this.personas[this.personas.length-1].position+1;
+    
     console.log(newPersona);
     return this.http.post(path, newPersona);
-
-    
-    //this.personas.push(newPersona);
-    //this.personas$.next(this.personas);
   }
 
   deletePersona(id: number){
@@ -47,14 +39,23 @@ export class PersonasService{
   }
 
   editPersona(newPersona: PersonaHttp){
+    console.log(newPersona)
+    
+    this.tempSend.id = newPersona.position;
+    this.tempSend.name= newPersona.name
+    this.tempSend.password= newPersona.password
+    this.tempSend.usuario= newPersona.usuario
+    this.tempSend.surname= newPersona.surname
+    this.tempSend.company_email= newPersona.company_email
+    this.tempSend.personal_email= newPersona.personal_email
+    this.tempSend.city= newPersona.city
+    this.tempSend.active= newPersona.active
+    this.tempSend.created_date= newPersona.created_date
+    this.tempSend.imagen_url= newPersona.imagen_url
+    this.tempSend.termination_date= newPersona.termination_date
+    console.log(this.tempSend)
     const path = 'http://localhost:8080/';
-    this.http.put(path,newPersona);
-    /** 
-    this.personas[newPersona.position] = newPersona;
-    this.personas$.next(this.personas);
-    this.pre_perso = undefined;*/
-
-
+    return this.http.put(path,this.tempSend);
   }
 
   PreEditPersona(newPersona: PersonaHttp){
@@ -66,9 +67,15 @@ export class PersonasService{
   }
 
   //AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+  /** 
   getPersonas$(): Observable<Persona[]>{
     return this.personas$.asObservable();
   }
+
+    getPersonas(): Persona[]{
+    return this.personas;
+  }
+  */
 
   getHttp(): Observable<PersonaHttp[]>{
     const path = 'http://localhost:8080/';
@@ -77,9 +84,7 @@ export class PersonasService{
 
   
 
-  getPersonas(): Persona[]{
-    return this.personas;
-  }
+
 
 
   private check: boolean = false;

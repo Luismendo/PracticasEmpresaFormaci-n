@@ -6,4 +6,5 @@ public interface AddUsuarioPort {
     public void AddUser(Usuario usuario);
     public boolean validValues(Usuario usuario) throws Exception;
     public void createUsuario(Usuario usuario) throws Exception;
+    public void EditUsuario(Usuario usuario);
 }

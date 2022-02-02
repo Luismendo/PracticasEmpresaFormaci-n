@@ -8,16 +8,6 @@ export class GlobalErrorHandlerService implements ErrorHandler{
   constructor(private injector: Injector) { }
 
   handleError(error: any): void {
-    const router = this.injector.get(Router);
-    console.log(`Request URL: ${router.url}`);
-
-    if(error instanceof HttpErrorResponse){
-      console.error('Backen Error: ', error.status);
-      console.error('Response body: ', error.message);
-    }else{
-      console.error('An error occurred', error.message);
+    throw new Error('Method not implemented.');
     }
-
-    router.navigate(['error']);
-  }
 }

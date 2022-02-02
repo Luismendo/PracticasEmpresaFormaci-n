@@ -6,6 +6,8 @@ import com.example._Database_DB1.Usuario.domain.UsuarioRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 
 @Service
 public class AddUsuarioUseCase implements AddUsuarioPort {
@@ -34,6 +36,25 @@ public class AddUsuarioUseCase implements AddUsuarioPort {
         if(validValues(usuario)){
             AddUser(usuario);
         }
+    }
+
+    @Override
+    public void EditUsuario(Usuario usuario) {
+        System.out.println("AQUI");
+        System.out.println(usuarioRepositorio.getById(usuario.getId()));
+        System.out.println(usuario);
+        usuarioRepositorio.getById(usuario.getId()).setName(usuario.getName());
+        usuarioRepositorio.getById(usuario.getId()).setUsuario(usuario.getUsuario());
+        usuarioRepositorio.getById(usuario.getId()).setActive(usuario.getActive());
+        usuarioRepositorio.getById(usuario.getId()).setCity(usuario.getCity());
+        usuarioRepositorio.getById(usuario.getId()).setCompany_email(usuario.getCompany_email());
+        usuarioRepositorio.getById(usuario.getId()).setPersonal_email(usuario.getPersonal_email());
+        usuarioRepositorio.getById(usuario.getId()).setCreated_date(usuario.getCreated_date());
+        usuarioRepositorio.getById(usuario.getId()).setTermination_date(usuario.getTermination_date());
+        usuarioRepositorio.getById(usuario.getId()).setImagen_url(usuario.getImagen_url());
+        usuarioRepositorio.flush();
+        System.out.println(usuarioRepositorio.getById(usuario.getId()));
 
     }
+
 }

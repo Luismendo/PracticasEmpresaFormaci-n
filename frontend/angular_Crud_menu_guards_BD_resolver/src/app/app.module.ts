@@ -20,12 +20,10 @@ import { IntroComponent } from './intro/intro.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { ModalComponent } from './modal/modal.component';
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { User } from './personas/persona';
 import { PersonasService } from './personas/personas.service';
-import { UserData } from './personas/bbdd.service';
 import { ErrorComponent } from './error/error.component';
 import { GlobalErrorHandlerService } from './interceptors/global-error-handler.service';
-import { ErrorInterceptorService } from './interceptors/error-interceptor.service';
+import { CustomHttpInterceptorService } from './interceptors/error-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -50,12 +48,10 @@ import { ErrorInterceptorService } from './interceptors/error-interceptor.servic
     MatNativeDateModule,
     HttpClientModule,
     MaterialExampleModule,
-    //InMemoryWebApiModule.forRoot(UserData)
-
   ],
   providers: [
-    //{provide: ErrorHandler, useClass: GlobalErrorHandlerService},
-    //{provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptorService, multi:true}
+    {provide: ErrorHandler, useClass: GlobalErrorHandlerService},
+    {provide: HTTP_INTERCEPTORS, useClass: CustomHttpInterceptorService, multi:true}
   ],
   bootstrap: [AppComponent]
 })

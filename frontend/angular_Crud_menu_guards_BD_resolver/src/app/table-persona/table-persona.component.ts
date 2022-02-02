@@ -1,8 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTable } from '@angular/material/table';
 import { Router } from '@angular/router';
-import { Personas } from '../personas/mock-persona';
-import { Persona, PersonaHttp } from '../personas/persona';
+import { PersonaHttp } from '../personas/persona';
 import { PersonasService } from '../personas/personas.service';
 
 @Component({
@@ -20,7 +19,7 @@ export class TablePersonaComponent implements OnInit {
   ELEMENT_DATA: any;
 
   @ViewChild(MatTable)
-  table!: MatTable<Persona>;
+  table!: MatTable<PersonaHttp>;
 
 
 
