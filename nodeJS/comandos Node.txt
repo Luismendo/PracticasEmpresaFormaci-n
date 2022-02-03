@@ -1,0 +1,10 @@
+SET PORT=4080&& node start_node.js
+
+node start-app
+npm i cowsay
+npm install -g cowsay
+npm install --save-dev cross-env
+
+npm install -g nodemon ==> escuchar cambios automatic / reiniciar el server
+npm i express ==> framework web/movil
+
