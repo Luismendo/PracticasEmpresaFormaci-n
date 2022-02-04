@@ -88,17 +88,24 @@ app.post('/recuperardatos', function(req, res) {
 
 setInterval(function() {
     var date = new Date();
-    if ( date.getSeconds() === 0 ) {
-      DoSomething();
-    }
-
-    for(var i = 0; i <= TimeArrayUse.length-1; i++) {
-        if(Date.now() - TimeArrayUse[i] > 500){
-            OperationArray.splice(i, 1);
-            TimeArrayUse.splice(i, 1);    
+    console.log(TimeArrayUse)
+    if(TimeArrayUse.length > 0){
+        console.log("Mayor 0")
+        for(var i = 0; i <= TimeArrayUse.length-1; i++) {
+            console.log("Tiempos = " +Date.now(),TimeArrayUse[i])
+            
+            if((Date.now() - TimeArrayUse[i]) > 30000){
+                console.log("Terminate id "+i, OperationArray[i], IDArray, IDArray[i]) 
+                OperationArray.splice(i, 1);
+                IDArray.splice(i, 1); 
+                TimeArrayUse.splice(i, 1);   
+                console.log("Terminate id") 
+            }
         }
     }
-  }, 500);
+
+
+  }, 1000);
 
 app.listen(8080);
 console.log('8080 is the magic port');
