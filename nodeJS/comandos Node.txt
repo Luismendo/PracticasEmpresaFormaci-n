@@ -5,6 +5,9 @@ npm i cowsay
 npm install -g cowsay
 npm install --save-dev cross-env
 
+---------------------
 npm install -g nodemon ==> escuchar cambios automatic / reiniciar el server
 npm i express ==> framework web/movil
-
+npm install jst ==> 	Automatically caching of intermediate JavaScript
+			Unbuffered code for embed codes etc {% code %} or {{ variable }}
+---------------------

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head'); %>
+</head>
+<body class="container">
+
+<header>
+    <%- include('../partials/header'); %>
+</header>
+
+<main>
+    <div>
+        <a href="/?id=<%= id %>">Ejecutar otra operación</a>
+
+        <h1 class="display-6">Resultado de accion</h1>
+        
+
+        <p>Ultima Operación: <%= operador %> con numero: <%= numero %> del ID: <%= id %></p>
+        <p>Operacion realizadas:
+            <% operaciones.forEach(function(user) { %>
+                <%= user %>
+            <% }); %>
+        </p>
+
+        <p>Valor resultante: <%= total %></p>
+
+    </div>
+</main>
+
+<footer>
+    <%- include('../partials/footer'); %>
+</footer>
+
+</body>
+</html>
